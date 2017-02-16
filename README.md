@@ -1,7 +1,7 @@
 ## diditaditya.github.io
 
 ####About this site:
-This is the repo for **Hactiv8** bootcamp.
+This is the repo for **Hacktiv8** bootcamp.
 
 ####Tags and syntaxes:
 Basically only the _markdown_ stuff is used here. Well at least for this readme.
