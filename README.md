@@ -6,6 +6,9 @@ This is the repo for **Hacktiv8** bootcamp.
 ####Tags and syntaxes:
 Basically only the _markdown_ stuff is used here. Well at least for this readme.
 
+####Future development:
+In the near future, this will be the personal site to showcase the projects and portfolio.
+
 ####About me:
 A geotechnical engineer venturing outside his zone, leaving all what he knows behind and begins a journey in the world of coding.
 
