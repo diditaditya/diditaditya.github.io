@@ -1,6 +1,7 @@
 * {
   /*border: 1px solid rgba(0,0,0,0.3);*/
   font-family: Lato;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,12 +9,14 @@ body {
   margin: 0 auto;
 }
 
+/*
 .holder {
   background-image: url("https://dl.dropboxusercontent.com/s/tgzpall65owehhd/grassland.JPG");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
 }
+*/
 
 header {
   background-color: rgba(126,192,238,0.5);
