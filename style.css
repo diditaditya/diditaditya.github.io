@@ -81,5 +81,6 @@ footer {
 
 .socMedIcon {
   width: 25px;
-  border-radius: 2%;
+  margin-left: 2px;
+  margin-right: 2px;
 }
