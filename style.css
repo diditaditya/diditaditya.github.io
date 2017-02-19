@@ -1,84 +1,192 @@
 * {
-  /*border: 1px solid rgba(0,0,0,0.3);*/
-  font-family: Lato;
   box-sizing: border-box;
+  /*border: 1px solid red;*/
 }
 
-/*
-[class*="col-"] {
-  width: 100%;
-  float: left;
-  border: 1px solid rgba(0,0,0,0.3);
-}
 
-@media only screen and (min-width: 768px) {
-  .col-1 {width: 10%}
-  .col-2 {width: 20%}
-  .col-3 {width: 30%}
-  .col-4 {width: 40%}
-  .col-5 {width: 50%}
-  .col-6 {width: 60%}
-  .col-7 {width: 70%}
-  .col-8 {width: 80%}
-  .col-9 {width: 90%}
-  .col-10 {width: 100%}
+html {
+  /*font-family: 'Amatic SC', cursive;
+  font-family: 'Delius', cursive;
+  font-family: 'Just Another Hand', cursive;
+  font-family: 'Kalam', cursive;*/
 }
 
 .row {
   content: "";
   clear: both;
   display: table;
-}
-*/
-
-header {
-  background-color: rgba(126,192,238,0.5);
   width: 100%;
 }
 
-header h1 {
+[class*="col-"] {
+  width: 100%;
+  float: left;
+  border: 1px solid DarkSlateGray;
+}
+
+@media only screen and (min-width: 768px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+.cover {
+  background-color: Black;
+  max-width: 100%;
+}
+
+.cover-img {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#cover-title {
+  font-family: 'Amatic SC', cursive;
+  color: White;
+  text-align: center;
+  font-size: 10em;
+  margin: 0;
+  padding: 0;
+}
+
+#cover-tagline {
+  color: White;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 3em;
+  margin: 0% 0% 1% 0%;
+  padding: 0;
+}
+
+.cover-separator {
+  max-width: 100%;
+  height: 20px;
+  background-color: DarkSlateGray;
+  margin-top: -5px;
+  padding: 0;
+}
+
+#cover-footer {
+  padding: 1%;
+}
+
+#cover-copyright {
   color: DarkSlateGray;
+  font-family: 'Delius', cursive;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-header ul {
-  list-style-type: none;
+#cover-proceed {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2em;
+  color: White;
   text-align: center;
+  margin:0;
+  padding: 1%;
 }
 
-header li {
-  display: inline;
+#cover-proceed:hover {
+  font-weight: bold;
 }
 
-header li a {
+#cover-link {
   text-decoration: none;
   color: White;
 }
 
-header li a:hover {
+header {
+  background-color: Black;
+  top: 0;
+  max-width: 100%;
+  width: 100%;
+
+}
+
+.header {
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.25em;
+  text-align: center;
+  color: White;
+  margin: 0;
+  padding: .5%;
+}
+
+.chapter-content {
+  margin: 0% 5% 5% 5%;
+  font-family: 'Kalam', cursive;
+}
+
+.chapter-title {
+  font-weight: bold;
+  border-bottom: 1px solid DarkSlateGray;
+}
+
+.tight {
+  margin: 0;
+  padding: 0;
+}
+
+.contents-link {
+  font-weight: lighter;
+  text-decoration: none;
   color: Black;
 }
 
-.content {
-  display: block;
-  margin-left: 5%;
-  margin-right: 5%;
+.contents-link:hover {
+  font-weight: bold;
 }
 
-p {
-  text-align: justify;
+.contents-list {
+  font-size: 1.2em;
+  margin: 0% 0% 0% -1.5%;
 }
 
-footer {
-  text-align: center;
-  padding: 1px;
-  color: DarkSlateGray;
-  background-color: rgba(34,139,34,0.5);
-  position: relative;
+.chapter-footer {
   width: 100%;
+  position: fixed;
+  left: 0;
   bottom: 0;
+  z-index: 1;
 }
 
-.socMedIcon {
-  max-width: 30px;
+.nav-text {
+  background-color: Black;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 300;
+  color: White;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 1%;
+}
+
+.nav-text:hover {
+  font-weight: bold;
+}
+
+#chapter-link {
+  text-decoration: none;
+  color: White;
+}
+
+.chapter-copyright {
+  background-color: White;
+  font-family: 'Delius', cursive;
+  font-size: 0.75em;
+  margin: 0;
+  padding: 0.5%;
+  text-align: center;
 }
