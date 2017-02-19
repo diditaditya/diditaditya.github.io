@@ -129,6 +129,12 @@ header {
   font-family: 'Kalam', cursive;
 }
 
+@media only screen and (max-width: 768px) {
+  .chapter-content {
+    margin: 0% 5% 25% 5%;
+  }
+}
+
 .chapter-title {
   font-weight: bold;
   border-bottom: 1px solid DarkSlateGray;
