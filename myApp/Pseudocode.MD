@@ -81,7 +81,7 @@
  </ul>
 </p>
 
-<p>Create function which is called when <b>Run<b> button is pressed,
+<p>Create function which is called when <b>Run</b> button is pressed,
  <ul>
   <li>call <b>random</b> function,</li>
 	<li>call <b>check who wins</b> function,</li>
