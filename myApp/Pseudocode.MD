@@ -1,18 +1,21 @@
 ###ROCK PAPER SCISSORS PSEUDOCODE
 
-Make **object** which contains keys of 1, 2, 3 and properties of _Rock_, _Paper_, _Scissors_ respectively
-and the addresses for image source accordingly.
+<p>Make **object** which contains keys of 1, 2, 3 and properties of _Rock_, _Paper_, _Scissors_ respectively
+and the addresses for image source accordingly.</p>
 
-Make variables **player hand value**, **computer hand value**, **player win count**, **computer win count** and set them to 0.
-Make variable **winner** as empty string.  
+<p>Make variables **player hand value**, **computer hand value**, **player win count**, **computer win count** and set them to 0.</p>
 
-Make variables **player hand image**, **computer hand image**, **message**, **computer hand message**, **player score**, **computer score**
-from the corresponding HTML elements.
+<p>Make variable **winner** as empty string.</p>  
 
-Create 3 separate function for each **rock** **paper** **scissors** button,  
-	* change the **player hand image** address according to the clicked button
-	* change to **message** to shout which button is pressed
-	* change the **player hand value** to 0 if **rock**, 1 if **paper**, and 2 if **scissors**.
+<p>Make variables **player hand image**, **computer hand image**, **message**, **computer hand message**, **player score**, **computer score** from the corresponding HTML elements.</p>
+
+<p>Create 3 separate function for each **rock** **paper** **scissors** button,
+ <ul>
+  <li>change the **player hand image** address according to the clicked button</li>
+	<li>change to **message** to shout which button is pressed</li>
+	<li>change the **player hand value** to 0 if **rock**, 1 if **paper**, and 2 if **scissors**.</li>
+ </ul>
+</p>
 
 Create **random** function to randomly pick computer's hand,  
 	* make **random** variable which generates random number from 0 to 2,
