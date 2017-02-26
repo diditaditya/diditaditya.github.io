@@ -87,7 +87,7 @@ button {
 
 #luckTest {
   text-align: center;
-  margin: 0% 0% 30% 0%;
+  margin: 0% 0% 2.5% 0%;
 }
 
 footer {
@@ -97,10 +97,10 @@ footer {
 
 .chapter-footer {
   width: 100%;
-  position: fixed;
+  /*position: fixed;*/
   left: 0;
   bottom: 0;
-  z-index: 1;
+  /*z-index: 1;*/
 }
 
 .chapter-copyright {
