@@ -1,6 +1,6 @@
 ##ROCK PAPER SCISSORS PSEUDOCODE
 
-<p>Make <b>object</b> which contains keys of 1, 2, 3 and properties of <i>Rock</i>, <i>Paper</i>, <i>Scissors</i> respectively and the addresses for image source accordingly.</p>
+<p>Make <b>object</b> which contains keys of 0, 1, 2 and properties of <i>Rock</i>, <i>Paper</i>, <i>Scissors</i> respectively and the addresses for image source accordingly.</p>
 
 <p>Make variables <b>player hand value, computer hand value, player win count</b>, and <b>computer win count</b> and set them to 0.</p>
 
@@ -11,7 +11,7 @@
 <p>Create 3 separate function for each <b>rock paper scissors</b> button,
  <ul>
   <li>change the <b>player hand image</b> address according to the clicked button</li>
-	<li>change to <b>message</b> to shout which button is pressed</li>
+	<li>change the <b>message</b> to shout which button is pressed</li>
 	<li>change the <b>player hand value</b> to 0 if <b>rock</b>, 1 if <b>paper</b>, and 2 if <b>scissors</b>.</li>
  </ul>
 </p>
