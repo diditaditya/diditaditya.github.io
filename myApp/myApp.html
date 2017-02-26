@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Montserrat|Delius" rel="stylesheet">
+  <link href="style.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header>
+    <h4 class="header">a Journal - Simple javaScript Program</h4>
+  </header>
+
+  <div id="title" class="row">
+    <h1>Rock Paper Scissor</h1>
+  </div>
+
+  <div id="imgContainer" class="row">
+    <div class="col-5">
+      <h2>You</h2>
+      <img id="playerHand" src="img/rock.png">
+      <h3 id="playerScore">Score: 0</h3>
+    </div>
+    <div id="vsText" class="col-2">
+      <h2>VS</h2>
+    </div>
+    <div class="col-5">
+      <h2>Randomness</h2>
+      <img id="compHand" src="img/paper.png">
+      <h3 id="compScore">Score: 0</h3>
+    </div>
+  </div>
+
+  <div id="messageContainer" class="row">
+    <h3 id="message">Choose your Hand!<h3>
+  </div>
+
+  <div id="buttonContainer" class="row">
+    <button id="rockButton" onclick="rock()">Rock!</button>
+    <button id="paperButton" onclick="paper()">Paper!</button>
+    <button id="scissorsButton" onclick="scissors()">Scissors!</button>
+  </div>
+
+  <div id="luckTest" class="row">
+    <h3 id="compHandMsg">Release the Randomness!</h3>
+    <button id="luckTest" onclick="run()">Try your Luck!</button>
+  </div>
+
+  <footer class="chapter-footer">
+    <h5 class="chapter-copyright">copyright © 2017 diditaditya</h5>
+  </footer>
+
+  <script src="script.js" type="text/javascript"></script>
+
+</body>
+</html>
