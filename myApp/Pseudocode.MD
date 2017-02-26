@@ -2,11 +2,11 @@
 
 <p>Make <b>object</b> which contains keys of 1, 2, 3 and properties of <i>Rock</i>, <i>Paper</i>, <i>Scissors</i> respectively and the addresses for image source accordingly.</p>
 
-<p>Make variables <b>player hand value</b>, <b>computer hand value</b>, <b>player win count</b>, <b>computer win count</b> and set them to 0.</p>
+<p>Make variables <b>player hand value, computer hand value, player win count</b>, and <b>computer win count</b> and set them to 0.</p>
 
 <p>Make variable <b>winner</b> as empty string.</p>
 
-<p>Make variables <b>player hand image<b>, <b>computer hand image<b>, <b>message<b>, <b>computer hand message<b>, <b>player score<b>, <b>computer score<b> from the corresponding HTML elements.</p>
+<p>Make variables <b>player hand image, computer hand image, message, computer hand message, player score</b>, and <b>computer score</b> from the corresponding HTML elements.</p>
 
 <p>Create 3 separate function for each <b>rock paper scissors</b> button,
  <ul>
