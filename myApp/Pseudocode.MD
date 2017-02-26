@@ -1,56 +1,92 @@
 ###ROCK PAPER SCISSORS PSEUDOCODE
 
-<p>Make **object** which contains keys of 1, 2, 3 and properties of _Rock_, _Paper_, _Scissors_ respectively
-and the addresses for image source accordingly.</p>
+Make **object** which contains keys of 1, 2, 3 and properties of _Rock_, _Paper_, _Scissors_ respectively
+and the addresses for image source accordingly.
 
-<p>Make variables **player hand value**, **computer hand value**, **player win count**, **computer win count** and set them to 0.</p>
+Make variables **player hand value**, **computer hand value**, **player win count**, **computer win count** and set them to 0.
 
-<p>Make variable **winner** as empty string.</p>  
+Make variable **winner** as empty string.
 
-<p>Make variables **player hand image**, **computer hand image**, **message**, **computer hand message**, **player score**, **computer score** from the corresponding HTML elements.</p>
+Make variables **player hand image**, **computer hand image**, **message**, **computer hand message**, **player score**, **computer score** from the corresponding HTML elements.
 
-<p>Create 3 separate function for each **rock** **paper** **scissors** button,
+<p>Create 3 separate function for each <b>rock paper scissors</b> button,
  <ul>
-  <li>change the **player hand image** address according to the clicked button</li>
-	<li>change to **message** to shout which button is pressed</li>
-	<li>change the **player hand value** to 0 if **rock**, 1 if **paper**, and 2 if **scissors**.</li>
+  <li>change the <b>player hand image</b> address according to the clicked button</li>
+	<li>change to <b>message</b> to shout which button is pressed</li>
+	<li>change the <b>player hand value</b> to 0 if <b>rock</b>, 1 if <b>paper</b>, and 2 if <b>scissors</b>.</li>
  </ul>
 </p>
 
-Create **random** function to randomly pick computer's hand,  
-	* make **random** variable which generates random number from 0 to 2,
-	* change value of **computer hand value** to **random**,
-	* change the **computer hand image** address to the properties in **object** based on **random** variable value,
-	* change the **computer hand message** to shout which hand has randomly picked.
+<p>Create <b>random</b> function to randomly pick computer's hand,
+ <ul>
+  <li>make <b>random</b> variable which generates random number from 0 to 2,</li>
+	<li>change value of <b>computer hand value</b> to <b>random</b> variable value,
+	<li>change the <b>computer hand image</b> address to the properties in <b>object</b> based on <b>random</b> variable value,
+	<li>change the <b>computer hand message</b> to shout which hand has randomly picked.
+ </ul>
+</p>
 
-Create **check who wins** function, the function has 2 input parameters which are **player hand value** and **computer hand value**,  
-	* if **player hand value** is 0 or _rock_,
-	 * if **computer hand value** is 1 or _paper_ then
-	  * add 1 to **computer win count**,
-		* save "COMPUTER WINS!" to **winner**.
-	 * if **computer hand value** is 2 or _scissors_ then
-	  * add 1 to **player win count**,
-		* save "YOU WIN!" to **winner**.
-	 * else save "NOBODY WINS!" to **winner**.
-	* if **player hand value** is 1 or _paper_,
-	 * if **computer hand value** is 2 or _scissors_ then
-	  * add 1 to **computer win count**,
-		* save "COMPUTER WINS!" to **winner**.
-	 * if **computer hand value** is 0 or _rock_ then
-	  * add 1 to **player win count**,
-		* save "YOU WIN!" to **winner**.
-	 * else save "NOBODY WINS!" to **winner**.
-	* if **player hand value** is 2 or _scissors_,
-	 * if **computer hand value** is 1 or _paper_ then
-	  * add 1 to **computer win count**,
-		* save "COMPUTER WINS!" to **winner**.
-	 * if **computer hand value** is 0 or _rock_ then
-	  * add 1 to **player win count**,
-		* save "YOU WIN!" to **winner**.
-	 * else save "NOBODY WINS!" to **winner**.
+<p>Create <b>check who wins</b> function, the function has 2 input parameters which are <b>player hand value</b> and <b>computer hand value</b>,  
+ <ul>
+  <li>if <b>player hand value</b> is 0 or <i>rock</i>,
+	 <ul>
+	  <li>if <b>computer hand value</b> is 1 or <i>paper</i> then
+		 <ul>
+		  <li>add 1 to <b>computer win count</b>,</li>
+ 		  <li>save "COMPUTER WINS!" to <b>winner</b>.</li>
+		 </ul>
+		</li>
+		<li>if <b>computer hand value</b> is 2 or <i>scissors</i> then
+		 <ul>
+		  <li>add 1 to <b>player win count</b>,</li>
+		  <li>save "YOU WIN!" to <b>winner</b>.</li>
+		 </ul>
+		</li>
+		<li>else save "NOBODY WINS!" to <b>winner</b>.</li>
+	 </ul>
+	</li>
+	<li>if <b>player hand value</b> is 1 or <i>paper</i>,
+	 <ul>
+	  <li>if <b>computer hand value</b> is 2 or <i>scissors</i> then
+		 <ul>
+		  <li>add 1 to <b>computer win count</b>,</li>
+			<li>save "COMPUTER WINS!" to <b>winner</b>.</li>
+		 </ul>
+		</li>
+		<li>if <b>computer hand value</b> is 0 or <i>rock</i> then
+		 <ul>
+		  <li>add 1 to <b>player win count</b>,</li>
+			<li>save "YOU WIN!" to <b>winner</b>.</li>
+		 </ul>
+		</li>
+		<li>else save "NOBODY WINS!" to <b>winner</b>.</li>
+	 </ul>
+	</li>
+	<li>if <b>player hand value</b> is 2 or <i>scissors</i>,
+	 <ul>
+	  <li>if <b>computer hand value</b> is 1 or <i>paper</i> then
+		 <ul>
+		  <li>add 1 to <b>computer win count<b/>,</li>
+			<li>save "COMPUTER WINS!" to <b>winner</b>.</li>
+		 </ul>
+		</li>
+		<li>if <b>computer hand value</b> is 0 or <i>rock</i> then
+		 <ul>
+		  <li>add 1 to <b>player win count</b>,</li>
+			<li>save "YOU WIN!" to <b>winner</b>.</li>
+		 </ul>
+		</li>
+		<li>else save "NOBODY WINS!" to <b>winner</b>.</li>
+	 </ul>
+	</li>
+ </ul>
+</p>
 
-Create function which is called when **Run** button is pressed,  
-	* call **random** function,
-	* call **check who wins** function,
-	* update the player score by changing **player score** content with **player win count**,
-	* update the computer score by changing **computer score** content with **computer win count**.
+<p>Create function which is called when <b>Run<b> button is pressed,
+ <ul>
+  <li>call <b>random</b> function,</li>
+	<li>call <b>check who wins</b> function,</li>
+	<li>update the player score by changing <b>player score</b> content with <b>player win count</b>,</li>
+	<li>update the computer score by changing <b>computer score</b> content with <b>computer win count</b>.</li>
+ </ul>
+</p>
