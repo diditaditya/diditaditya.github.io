@@ -14,19 +14,19 @@ var winner = "Choose your Hand!";
 function rock() {
   playerHand.src = "img/rock.png";
   playHandVal = 0;
-  message.innerHTML = "You chose Rock!";
+  message.innerHTML = "You choose Rock!";
 }
 
 function paper() {
   playerHand.src = "img/paper.png";
   playHandVal = 1;
-  message.innerHTML = "You chose Paper!";
+  message.innerHTML = "You choose Paper!";
 }
 
 function scissors() {
   playerHand.src = "img/scissors.png";
   playHandVal = 2;
-  message.innerHTML = "You chose Scissors!";
+  message.innerHTML = "You choose Scissors!";
 }
 
 function randomness() {
