@@ -1,12 +1,12 @@
 ###ROCK PAPER SCISSORS PSEUDOCODE
 
-Make **object** which contains keys of 1, 2, 3 and properties of _Rock_, _Paper_, _Scissors_ respectively 
+Make **object** which contains keys of 1, 2, 3 and properties of _Rock_, _Paper_, _Scissors_ respectively
 and the addresses for image source accordingly.
 
 Make variables **player hand value**, **computer hand value**, **player win count**, **computer win count** and set them to 0.
 Make variable **winner** as empty string.  
 
-Make variables **player hand image**, **computer hand image**, **message**, **computer hand message**, **player score**, **computer score** 
+Make variables **player hand image**, **computer hand image**, **message**, **computer hand message**, **player score**, **computer score**
 from the corresponding HTML elements.
 
 Create 3 separate function for each **rock** **paper** **scissors** button,  
@@ -22,29 +22,29 @@ Create **random** function to randomly pick computer's hand,
 
 Create **check who wins** function, the function has 2 input parameters which are **player hand value** and **computer hand value**,  
 	* if **player hand value** is 0 or _rock_,
-		* if **computer hand value** is 1 or _paper_ then
-			* add 1 to **computer win count**,
-			* save "COMPUTER WINS!" to **winner**.
-		* if **computer hand value** is 2 or _scissors_ then
-			* add 1 to **player win count**,
-			* save "YOU WIN!" to **winner**.
-		* else save "NOBODY WINS!" to **winner**.
+	 * if **computer hand value** is 1 or _paper_ then
+	  * add 1 to **computer win count**,
+		* save "COMPUTER WINS!" to **winner**.
+	 * if **computer hand value** is 2 or _scissors_ then
+	  * add 1 to **player win count**,
+		* save "YOU WIN!" to **winner**.
+	 * else save "NOBODY WINS!" to **winner**.
 	* if **player hand value** is 1 or _paper_,
-		* if **computer hand value** is 2 or _scissors_ then
-			* add 1 to **computer win count**,
-			* save "COMPUTER WINS!" to **winner**.
-		*if **computer hand value** is 0 or _rock_ then
-			* add 1 to **player win count**,
-			* save "YOU WIN!" to **winner**.
-		* else save "NOBODY WINS!" to **winner**.
+	 * if **computer hand value** is 2 or _scissors_ then
+	  * add 1 to **computer win count**,
+		* save "COMPUTER WINS!" to **winner**.
+	 * if **computer hand value** is 0 or _rock_ then
+	  * add 1 to **player win count**,
+		* save "YOU WIN!" to **winner**.
+	 * else save "NOBODY WINS!" to **winner**.
 	* if **player hand value** is 2 or _scissors_,
-		* if **computer hand value** is 1 or _paper_ then
-			* add 1 to **computer win count**,
-			* save "COMPUTER WINS!" to **winner**.
-		* if **computer hand value** is 0 or _rock_ then
-			* add 1 to **player win count**,
-			* save "YOU WIN!" to **winner**.
-		* else save "NOBODY WINS!" to **winner**.
+	 * if **computer hand value** is 1 or _paper_ then
+	  * add 1 to **computer win count**,
+		* save "COMPUTER WINS!" to **winner**.
+	 * if **computer hand value** is 0 or _rock_ then
+	  * add 1 to **player win count**,
+		* save "YOU WIN!" to **winner**.
+	 * else save "NOBODY WINS!" to **winner**.
 
 Create function which is called when **Run** button is pressed,  
 	* call **random** function,
