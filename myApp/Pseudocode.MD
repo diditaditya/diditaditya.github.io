@@ -1,13 +1,12 @@
-###ROCK PAPER SCISSORS PSEUDOCODE
+##ROCK PAPER SCISSORS PSEUDOCODE
 
-Make **object** which contains keys of 1, 2, 3 and properties of _Rock_, _Paper_, _Scissors_ respectively
-and the addresses for image source accordingly.
+<p>Make <b>object</b> which contains keys of 1, 2, 3 and properties of <i>Rock</i>, <i>Paper</i>, <i>Scissors</i> respectively and the addresses for image source accordingly.</p>
 
-Make variables **player hand value**, **computer hand value**, **player win count**, **computer win count** and set them to 0.
+<p>Make variables <b>player hand value</b>, <b>computer hand value</b>, <b>player win count</b>, <b>computer win count</b> and set them to 0.</p>
 
-Make variable **winner** as empty string.
+<p>Make variable <b>winner</b> as empty string.</p>
 
-Make variables **player hand image**, **computer hand image**, **message**, **computer hand message**, **player score**, **computer score** from the corresponding HTML elements.
+<p>Make variables <b>player hand image<b>, <b>computer hand image<b>, <b>message<b>, <b>computer hand message<b>, <b>player score<b>, <b>computer score<b> from the corresponding HTML elements.</p>
 
 <p>Create 3 separate function for each <b>rock paper scissors</b> button,
  <ul>
@@ -20,7 +19,7 @@ Make variables **player hand image**, **computer hand image**, **message**, **co
 <p>Create <b>random</b> function to randomly pick computer's hand,
  <ul>
   <li>make <b>random</b> variable which generates random number from 0 to 2,</li>
-	<li>change value of <b>computer hand value</b> to <b>random</b> variable value,
+	<li>change the value of <b>computer hand value</b> to <b>random</b> variable value,
 	<li>change the <b>computer hand image</b> address to the properties in <b>object</b> based on <b>random</b> variable value,
 	<li>change the <b>computer hand message</b> to shout which hand has randomly picked.
  </ul>
@@ -66,7 +65,7 @@ Make variables **player hand image**, **computer hand image**, **message**, **co
 	 <ul>
 	  <li>if <b>computer hand value</b> is 1 or <i>paper</i> then
 		 <ul>
-		  <li>add 1 to <b>computer win count<b/>,</li>
+		  <li>add 1 to <b>computer win count</b>,</li>
 			<li>save "COMPUTER WINS!" to <b>winner</b>.</li>
 		 </ul>
 		</li>
