@@ -59,7 +59,7 @@ header {
   /*display: block;
   width: 100%;
   float: left;*/
-  margin: 0% 33.33% 0% 33.33%;
+  
 }
 
 #container {
@@ -70,7 +70,7 @@ header {
 
 .card {
   border: 1px solid DarkSlateGray;
-  padding-top: 50%;
+  padding-top: 25%;
   border-radius: 10px;
   width: 30%;
   float: left;
@@ -78,9 +78,7 @@ header {
   margin: 1.25%;
 }
 
-@media only screen and (min-width: 400px) {
-  .card {padding-top: 25%};
-}
+
 
 #buttonContainer {
   diplay = block;
