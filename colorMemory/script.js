@@ -17,7 +17,7 @@ var colAmount = 3;
 for (var i = 0; i < rowAmount; i++) {
   for (var j = 0; j < colAmount; j++) {
     var colDiv = document.createElement("div");
-    colDiv.setAttribute("class", "col");
+    colDiv.setAttribute("class", "card");
     var id = "col "+i+"-"+j;
     colDiv.setAttribute("id", id);
     rowDiv[i].appendChild(colDiv);
