@@ -70,16 +70,16 @@ header {
 
 .card {
   border: 1px solid DarkSlateGray;
-  padding: 2.5%;
+  padding-top: 50%;
   border-radius: 10px;
-  width: 33.33%;
-  height: 100px;
+  width: 30%;
   float: left;
   background-color: Gray;
+  margin: 1.25%;
 }
 
-.card:hover {
-  border: 2px dashed Black;
+@media only screen and (min-width: 400px) {
+  .card {padding-top: 25%};
 }
 
 #buttonContainer {
