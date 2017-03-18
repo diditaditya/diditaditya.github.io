@@ -1,0 +1,94 @@
+//select container
+var container = document.getElementById("container");
+
+//create rowDiv inside container
+var rowAmount = 4;
+for (var i = 0; i < rowAmount; i++) {
+  var rowDiv = document.createElement("div");
+  rowDiv.setAttribute("id", "row"+i);
+  container.appendChild(rowDiv);
+}
+
+//create rowDiv which contains the rows
+var rowDiv = container.children;
+var colList = [];
+//create colDiv inside rowDiv
+var colAmount = 3;
+for (var i = 0; i < rowAmount; i++) {
+  for (var j = 0; j < colAmount; j++) {
+    var colDiv = document.createElement("div");
+    colDiv.setAttribute("class", "col");
+    var id = "col "+i+"-"+j;
+    colDiv.setAttribute("id", id);
+    rowDiv[i].appendChild(colDiv);
+  }
+}
+
+//collection of colors
+var colors = ["Red", "Green", "Blue", "Yellow", "Purple", "Orange"];
+//create object constructor for the color
+var colorObj = function(name) {
+  this.name = name;
+  this.count = 0;
+}
+
+//create object constructor for the card
+var card = function(id, color) {
+  this.id = id;
+  this.color = color;
+}
+
+//list of color objects
+var colorList = [];
+for (var i in colors) {
+  colorList[i] = new colorObj(colors[i]);
+}
+
+
+
+//function to randomly choose colors
+function randomColor(array) {
+  var color = array[Math.floor(Math.random()*array.length)];
+  return color;
+}
+
+//assign cord objects
+var cards = [];
+for (var m = 0; m < rowAmount; m++) {
+  for (var n = 0; n < colAmount; n++) {
+    var id = "col "+ m + "-" + n;
+    var color = randomColor(colors);
+    for (var i in colorList) {
+      if (colorList[i].name === color) {
+        colorList[i].count += 1;
+      }
+    }
+    cards.push(new card(id, color));
+  }
+}
+
+console.log(cards);
+console.log(colorList);
+
+//function to turn the card
+function flip(elem) {
+  var id = elem.id;
+  var color = "";
+  for (var i in cards) {
+    if (cards[i].id === id) {
+      color = cards[i].color;
+    }
+  }
+  elem.style.background = color;
+}
+
+//add event listener to the cols
+for (var k = 0; k < rowAmount; k++) {
+  for (var l = 0; l < colAmount; l++) {
+    var id = "col "+k+"-"+l;
+    var col = document.getElementById(id);
+    col.addEventListener("click", function() {
+      flip(this);
+    });
+  }
+}
