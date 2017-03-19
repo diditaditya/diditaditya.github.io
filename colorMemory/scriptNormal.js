@@ -111,8 +111,9 @@ function checkColor(openedColor) {
 }
 
 //function to turn the card
-function flip(elem) { 
-  for (var n in cards) {
+function flip(elem) {
+  if (opened < 2) { 
+    for (var n in cards) {
 	  var id = elem.id;
 	  var color = "";
 	  if (cards[n].id === id) {
@@ -125,9 +126,10 @@ function flip(elem) {
 				}
 			}
 			checkOpen(id, color);
-			elem.style.background = color;			  
-		  }
+		  	elem.style.background = color;			  
+	  	  }
 	  }
+    }
   }
 }
 
