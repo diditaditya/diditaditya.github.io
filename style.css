@@ -107,9 +107,12 @@ html {
   color: White;
 }
 
-@media only screen and (min-width: 300px) {
+@media only screen and (min-width: 500px) {
   #cover-title {
     font-size: 7em;
+  }
+  #cover-tagline {
+    font-size: 2em;
   }
   .cover-separator {
     height: 5px;

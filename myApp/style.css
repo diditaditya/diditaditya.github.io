@@ -103,6 +103,26 @@ footer {
   /*z-index: 1;*/
 }
 
+.nav-text {
+  background-color: Black;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 300;
+  color: White;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 1%;
+}
+
+.nav-text:hover {
+  font-weight: bold;
+}
+
+#chapter-link {
+  text-decoration: none;
+  color: White;
+}
+
 .chapter-copyright {
   background-color: White;
   color: DarkSlateGray;
