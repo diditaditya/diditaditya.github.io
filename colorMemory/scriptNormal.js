@@ -147,11 +147,34 @@ function finished() {
   }
 }
 
+//function to create new button
+var buttonContainer = document.getElementById("buttonContainer");
+function newButton() {
+  var buttonOr = document.createElement("p");
+  var orText = document.createTextNode("or");
+  buttonOr.appendChild(orText);
+  buttonContainer.appendChild(buttonOr);
+  
+  var buttonHard = document.createElement("button");
+  var goHardText = document.createTextNode("It was Too Easy");
+  buttonHard.appendChild(goHardText);
+  buttonHard.setAttribute("class", "btn");
+  buttonHard.addEventListener("click", function() {
+    window.location = "colorMemoryHard.html";  
+  });
+  buttonContainer.appendChild(buttonHard);
+}
+
 //function for the game after it finishes
+var message = document.getElementById("message");
 function postFinished() {
   if (finished()) {
-	  console.log("All cards have been paired!");
 	  container.style.display = "none";
+	  var messagePar = document.createElement("p");
+	  var messageText = document.createTextNode("All colors have been paired!");
+	  messagePar.appendChild(messageText);
+	  message.appendChild(messagePar);
+	  newButton();
   }
 }
 

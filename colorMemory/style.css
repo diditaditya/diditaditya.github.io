@@ -70,10 +70,7 @@ header {
 }
 
 #main {
-  /*display: block;
-  width: 100%;
-  float: left;*/
-  
+ 
 }
 
 #container {
@@ -90,7 +87,19 @@ header {
   margin: 1.25%;
 }
 
+.cardHard {
+  border: 1px solid DarkSlateGray;
+  padding-top: 25%;
+  border-radius: 10px;
+  width: 18%;
+  float: left;
+  background-color: Gray;
+  margin: 1%;
+}
 
+#message {
+  text-align: center;
+}
 
 #buttonContainer {
   diplay = block;
@@ -113,6 +122,26 @@ header {
 footer {
   margin-top: 15%;
   text-align: center;
+}
+
+.nav-text {
+  background-color: Black;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 300;
+  color: White;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 1%;
+}
+
+.nav-text:hover {
+  font-weight: bold;
+}
+
+#chapter-link {
+  text-decoration: none;
+  color: White;
 }
 
 .chapter-footer {
