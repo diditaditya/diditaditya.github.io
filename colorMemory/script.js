@@ -82,10 +82,6 @@ for (var m = 0; m < rowAmount; m++) {
   }
 }
 
-//print the objects to the console
-//console.log(cards);
-//console.log(colorList);
-
 //function to count the flipped card, max 2 cards is allowed
 var opened = 0;
 var openedCard = [];
@@ -114,6 +110,51 @@ function checkColor(openedColor) {
 	return finalColor;
 }
 
+//function to turn the card
+function flip(elem) { 
+  for (var n in cards) {
+	  var id = elem.id;
+	  var color = "";
+	  if (cards[n].id === id) {
+		  //check whether the card is already paired
+		  if (!cards[n].paired) {
+			//if the card is not paired yet, do the flip
+			for (var i in cards) {
+				if (cards[i].id === id) {
+					color = cards[i].color;
+				}
+			}
+			checkOpen(id, color);
+			elem.style.background = color;			  
+		  }
+	  }
+  }
+}
+
+//function to check if all cards are paired
+function finished() {
+  var falseAmount = 0;
+  for (var i in cards) {
+    if (cards[i].paired === false) {
+	  falseAmount += 1
+	}
+  }
+  console.log("False amount: " + falseAmount);
+  if (falseAmount > 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//function for the game after it finishes
+function postFinished() {
+  if (finished()) {
+	  console.log("All cards have been paired!");
+	  container.style.display = "none";
+  }
+}
+
 //function to flip the opened cards based on color check
 function flipAgain(cardToCheck) {
 	if (opened === 2) {
@@ -139,35 +180,12 @@ function flipAgain(cardToCheck) {
 		opened = 0;
 		openedCard = [];
 		openedColor = [];
+		//finished check and run the post-finish event if true
+		postFinished();
 	}
 }
 
-//function to turn the card
-function flip(elem) { 
-  for (var n in cards) {
-	  var id = elem.id;
-	  var color = "";
-	  if (cards[n].id === id) {
-		  //check whether the card is already paired
-		  if (!cards[n].paired) {
-			//if the card is not paired yet, do the flip
-			for (var i in cards) {
-				if (cards[i].id === id) {
-					color = cards[i].color;
-				}
-			}
-			checkOpen(id, color);
-			//console.log(opened);
-			//console.log(openedCard);
-			//console.log(openedColor);
-			//console.log(cards);
-			elem.style.background = color;			  
-		  }
-	  }
-  }
-}
-
-//add event listener to the cols
+//add event listener to the cards
 for (var k = 0; k < rowAmount; k++) {
   for (var l = 0; l < colAmount; l++) {
     var id = "col "+k+"-"+l;
@@ -178,6 +196,7 @@ for (var k = 0; k < rowAmount; k++) {
     });
   }
 }
+
 
 //restart function for the button, refreshes the page
 function restart() {
