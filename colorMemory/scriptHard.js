@@ -216,7 +216,7 @@ for (var k = 0; k < rowAmount; k++) {
     var col = document.getElementById(id);
     col.addEventListener("click", function() {
       flip(this);
-      setTimeout(function() {flipAgain(openedCard)}, 750);
+      setTimeout(function() {flipAgain(openedCard)}, 1500);
     });
   }
 }
