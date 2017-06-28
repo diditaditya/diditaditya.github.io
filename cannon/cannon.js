@@ -1,0 +1,76 @@
+var groundThickness = 25;
+var initVelocity = 10;
+var gravity = 0.005
+var groundFriction = 5;
+
+var originX = 25;
+var originY = 275;
+
+var counter = 0;
+
+var ball = { isFired: false };
+let canvasWidth;
+
+function setup() {
+  if (window.innerWidth > 575) {
+    canvasWidth = 575;
+  } else {
+    canvasWidth = window.innerWidth;
+  }
+  var canvas = createCanvas(canvasWidth - 25, 300);
+  canvas.parent('#canvas-container');
+}
+
+function drawLine(originX, originY) {
+  let x1 = originX;
+  let y1 = originY;
+  let diag = dist(x1, y1, mouseX, mouseY);
+
+  let radius = 25;
+  let x2 = x1 + (mouseX - x1)*(radius/diag);
+  let y2 = y1 + (mouseY - y1)*(radius/diag);
+
+  stroke(0);
+  fill(0);
+  if (mouseX > originX && mouseY < originY) {
+    line(x1, y1, x2, y2);
+  } else if (mouseY < originY) {
+    line(x1, y1, x1, y1 - radius);
+  } else if (mouseY > originY) {
+    line(x1, y1, x1 + radius, y1);
+  }
+
+}
+
+function drawGround(thickness) {
+  noStroke();
+  fill(0,104,10);
+  var groundElev = height - thickness;
+  rect(0, groundElev, width, thickness);
+}
+
+function draw(){
+  background(135,206,235);
+
+  stroke(0);
+  fill(0);
+
+  drawGround(groundThickness);
+
+  stroke(0);
+  fill(0);
+  ellipse(originX, originY, 10, 10);
+  drawLine(originX, originY);
+
+  if (mouseIsPressed && mouseX > originX && mouseY < originY) {
+    if (!ball.isFired) {
+      ball = new Ball(originX, originY, mouseX, mouseY, initVelocity);
+    }
+  }
+
+  if (ball.isFired) {
+    ball.update();
+  }
+
+
+}
