@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  /*border: 1px solid Black;*/
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.row {
+  content: "";
+  clear: both;
+  display: table;
+  width: 100%;
+}
+
+.containRow {
+  content: "";
+  clear: both;
+  display: table;
+  width: 100%;
+}
+
+@media only screen and (min-width: 500px) {
+  .containRow {
+    width: 33.33%;
+    margin-left: 33.33%;
+  }
+}
+
+[class*="col-"] {
+  width: 33.33%;
+  float: left;
+}
+
+@media only screen and (min-width: 300px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+#title {
+  text-align: center;
+  font-size: 1em;
+}
+
+header {
+  background-color: Black;
+  top: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.header {
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.25em;
+  text-align: center;
+  color: White;
+  margin: 0;
+  padding: .5%;
+}
+
+#main {
+
+}
+
+#container {
+
+}
+
+.card {
+  border: 1px solid DarkSlateGray;
+  padding-top: 25%;
+  border-radius: 10px;
+  float: left;
+  background-color: Gray;
+}
+
+.cardHard {
+  border: 1px solid DarkSlateGray;
+  padding-top: 25%;
+  border-radius: 10px;
+  width: 18%;
+  float: left;
+  background-color: Gray;
+  margin: 1%;
+}
+
+#message {
+  text-align: center;
+}
+
+#buttonContainer {
+  diplay = block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 15%;
+  min-width: 150px;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  background-color: DarkSlateGray;
+  color: White;
+  padding: 5px 25px 5px 25px;
+  border-radius: 10px;
+}
+
+footer {
+  margin-top: 15%;
+  text-align: center;
+}
+
+.nav-text {
+  background-color: Black;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 300;
+  color: White;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 1%;
+}
+
+.nav-text:hover {
+  font-weight: bold;
+}
+
+#chapter-link {
+  text-decoration: none;
+  color: White;
+}
+
+.chapter-footer {
+  width: 100%;
+  /*position: fixed;*/
+  left: 0;
+  bottom: 0;
+  /*z-index: 1;*/
+}
+
+.chapter-copyright {
+  background-color: White;
+  color: DarkSlateGray;
+  font-family: 'Delius', cursive;
+  font-size: 0.75em;
+  margin: 0;
+  padding: 0.5%;
+  text-align: center;
+}

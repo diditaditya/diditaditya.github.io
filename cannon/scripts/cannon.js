@@ -21,7 +21,6 @@ let blopSound;
 function preload() {
   cannonSound = loadSound('sounds/Cannon.wav');
   blopSound = loadSound('sounds/Blop.wav');
-  console.log(navigator);
 }
 
 function setup() {
