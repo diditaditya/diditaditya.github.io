@@ -14,14 +14,14 @@ var main = new Vue({
   el: '#main',
   data: {
     deviceOrientation: `Device Orientation support?`,
-    tiltLR: '',
-    tiltFB: '',
-    dir: '',
+    tiltLR: 'tilt L-R: Unknown',
+    tiltFB: 'tilt F-B: Unknown',
+    dir: 'direction: Unknown',
     deviceMotion: `Device Motion support?`,
-    accX: '',
-    accY: '',
-    accZ: '',
-    fullScreenMessage: ''
+    accX: 'acc X: Unknown',
+    accY: 'acc Y: Unknown',
+    accZ: 'acc Z: Unknown',
+    fullScreenMessage: 'Full Screen? Unknown'
   },
   methods: {
     goFullScreen() {
@@ -42,6 +42,8 @@ var main = new Vue({
         } else if (body.msRequestFullscreen) {
           self.fullScreenMessage = `Full Screen? microsoft`;
           body.msRequestFullscreen();
+        } else {
+          self.fullScreenMessage = `Full Screen? unknown`;
         }
       } else {
         self.fullScreenMessage = `Full Screen? Not supported, requires gesture input`;
