@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="motion.css">
   <script src="scripts/p5.min.js"></script>
   <script src="scripts/p5.sound.min.js"></script>
-  <script src="scripts/motion.js"></script>
   <script src="scripts/vue@2.3.4.js"></script>
   <title>Motion</title>
 </head>
@@ -24,62 +23,14 @@
       <li>{{ tiltFB }}</li>
       <li>{{ dir }}</li>
     </ul>
+    {{ deviceMotion }}
+    <ul>
+      <li>{{ accX }}</li>
+      <li>{{ accY }}</li>
+      <li>{{ accZ }}</li>
+    </ul>
   </div>
 
-  <script>
-
-    var HeaderText = {
-      template: '<h4 class="header">Simple App - Device Motion</h4>'
-    }
-
-    var header = new Vue({
-      el: 'header',
-      data: {},
-      components: {
-        'header-text': HeaderText
-      }
-    });
-
-    var main = new Vue({
-      el: '#main',
-      data: {
-        deviceOrientation: `Device Orientation support?`,
-        tiltLR: '',
-        tiltFB: '',
-        dir: '',
-        deviceMotion: `Device Motion support?`
-      },
-      created: function() {
-        let self = this;
-        if (window.DeviceOrientationEvent) {
-          window.addEventListener('deviceorientation', function(eventData) {
-
-            if (eventData.gamma !== null) {
-              self.tiltLR = `tilt L-R: ${Math.floor(eventData.gamma)}`;
-            } else {
-              self.tiltLR = 'tilt L-R: Not supported';
-            }
-
-            if (eventData.beta !== null) {
-              self.tiltFB = `tilt F-B: ${Math.floor(eventData.beta)}`;
-            } else {
-              self.tiltFB = 'tilt F-B: Not supported';
-            }
-
-            if (eventData.alpha !== null) {
-              self.dir = `direction: ${Math.floor(eventData.alpha)}`;
-            } else {
-              self.dir = 'direction: Not supported';
-            }
-
-          });
-        } else {
-          self.tiltLR = 'tilt L-R: Not supported';
-          self.tiltFB = 'tilt F-B: Not supported';
-          self.dir = 'direction: Not supported';
-        }
-      }
-    });
-  </script>
+  <script src="scripts/motion.js"></script>
 </body>
 </html>
