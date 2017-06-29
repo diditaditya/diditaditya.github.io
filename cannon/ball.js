@@ -7,7 +7,7 @@ class Ball {
     this.posX = originX;
     this.posY = originY;
     this.initVelocity = initVelocity;
-
+    this.hitCount = 0;
     this.angle = atan((mouseY - originY)/(mouseX - originX));
   }
 
@@ -20,13 +20,15 @@ class Ball {
       ellipse(this.posX, this.posY,this.radius, this.radius);
 
     } else {
+      if (ball.hitCount === 0) {
+        missCounter ++;
+      };
       ball = { isFired: false };
       counter = 0;
+      accuracy = Math.round(((shotCounter - missCounter) / shotCounter)*100);
     }
-  }
 
-  drawBall() {
-    ellipse(this.posX, this.posY, this.radius, this.radius);
+
   }
 
 }
