@@ -24,18 +24,28 @@ var main = new Vue({
   },
   methods: {
     goFullScreen() {
+      let body = document.documentElement;
+      
       let browserInfo = navigator.userAgent.toLowerCase();
       if (/iphone/.test(browserInfo) || /android/.test(browserInfo)) {
         // let body = document.getElementsByTagName('body');
-        // body.requestFullScreen();
-        window.requestFullScreen();
+      }
+
+      if (body.requestFullscreen) {
+        body.requestFullscreen();
+      } else if (body.webkitrequestFullscreen) {
+        body.webkitrequestFullscreen();
+      } else if (body.mozrequestFullscreen) {
+        body.mozrequestFullscreen();
+      } else if (body.msrequestFullscreen) {
+        body.msrequestFullscreen();
       }
     }
   },
   created: function() {
     let self = this;
 
-    // self.goFullScreen();
+    self.goFullScreen();
 
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', function(eventData) {
