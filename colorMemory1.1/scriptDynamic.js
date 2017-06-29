@@ -1,15 +1,3 @@
-//full screen
-let body = document.documentElement;
-if (body.requestFullscreen) {
-  body.requestFullscreen();
-} else if (body.webkitRequestFullscreen) {
-  body.webkitRequestFullscreen();
-} else if (body.mozRequestFullscreen) {
-  body.mozRequestFullscreen();
-} else if (body.msRequestFullscreen) {
-  body.msRequestFullscreen();
-}
-
 //level
 var level = 1;
 var levelHeader = document.getElementById("level");
