@@ -26,8 +26,9 @@ var main = new Vue({
     goFullScreen() {
       let browserInfo = navigator.userAgent.toLowerCase();
       if (/iphone/.test(browserInfo) || /android/.test(browserInfo)) {
-        let body = document.getElementsByTagName('body');
-        body.requestFullScreen();
+        // let body = document.getElementsByTagName('body');
+        // body.requestFullScreen();
+        window.requestFullScreen();
       }
     }
   },
