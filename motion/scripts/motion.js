@@ -25,7 +25,7 @@ var main = new Vue({
   methods: {
     goFullScreen() {
       let body = document.documentElement;
-      
+
       let browserInfo = navigator.userAgent.toLowerCase();
       if (/iphone/.test(browserInfo) || /android/.test(browserInfo)) {
         // let body = document.getElementsByTagName('body');
@@ -33,12 +33,12 @@ var main = new Vue({
 
       if (body.requestFullscreen) {
         body.requestFullscreen();
-      } else if (body.webkitrequestFullscreen) {
-        body.webkitrequestFullscreen();
-      } else if (body.mozrequestFullscreen) {
-        body.mozrequestFullscreen();
-      } else if (body.msrequestFullscreen) {
-        body.msrequestFullscreen();
+      } else if (body.webkitRequestFullscreen) {
+        body.webkitRequestFullscreen();
+      } else if (body.mozRequestFullscreen) {
+        body.mozRequestFullscreen();
+      } else if (body.msRequestFullscreen) {
+        body.msRequestFullscreen();
       }
     }
   },
