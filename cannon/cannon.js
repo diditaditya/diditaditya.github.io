@@ -76,8 +76,6 @@ function draw(){
 
   stroke(0);
   fill(0);
-  textSize(7);
-  text(`Played on ${navigator.userAgent}`, 25, 10);
   textSize(12);
   text(`Shot: ${shotCounter}`, 25, 25);
   text(`Accuracy: ${accuracy} %`, 25, 40);
