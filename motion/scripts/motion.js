@@ -43,7 +43,13 @@ var main = new Vue({
           self.fullScreenMessage = `Full Screen? microsoft`;
           body.msRequestFullscreen();
         } else {
-          self.fullScreenMessage = `Full Screen? unknown`;
+          let device = '';
+          if (/iphone/.test(browserInfo)) {
+            device = 'iphone';
+          } else if (/android/.test(browserInfo)) {
+            device = 'android';
+          }
+          self.fullScreenMessage = `Full Screen? ${device} - unknown`;
         }
       } else {
         self.fullScreenMessage = `Full Screen? Not supported, requires gesture input`;
