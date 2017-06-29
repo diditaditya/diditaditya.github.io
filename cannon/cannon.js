@@ -21,6 +21,7 @@ let blopSound;
 function preload() {
   cannonSound = loadSound('sounds/Cannon.wav');
   blopSound = loadSound('sounds/Blop.wav');
+  console.log(navigator);
 }
 
 function setup() {
@@ -75,8 +76,12 @@ function draw(){
 
   stroke(0);
   fill(0);
+  textSize(7);
+  text(`Played on ${navigator.userAgent}`, 25, 10);
+  textSize(12);
   text(`Shot: ${shotCounter}`, 25, 25);
   text(`Accuracy: ${accuracy} %`, 25, 40);
+
 
   if (balloons.balloons.length === 0) {
     if (!ball.isFired) {
