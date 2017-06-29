@@ -20,26 +20,33 @@ var main = new Vue({
     deviceMotion: `Device Motion support?`,
     accX: '',
     accY: '',
-    accZ: ''
+    accZ: '',
+    fullScreenMessage: ''
   },
   methods: {
     goFullScreen() {
+      let self = this;
       let body = document.documentElement;
 
       let browserInfo = navigator.userAgent.toLowerCase();
       if (/iphone/.test(browserInfo) || /android/.test(browserInfo)) {
-        // let body = document.getElementsByTagName('body');
+        if (body.requestFullscreen) {
+          self.fullScreenMessage = `Full Screen? standard`;
+          body.requestFullscreen();
+        } else if (body.webkitRequestFullscreen) {
+          self.fullScreenMessage = `Full Screen? webkit`;
+          body.webkitRequestFullscreen();
+        } else if (body.mozRequestFullscreen) {
+          self.fullScreenMessage = `Full Screen? moz`;
+          body.mozRequestFullscreen();
+        } else if (body.msRequestFullscreen) {
+          self.fullScreenMessage = `Full Screen? microsoft`;
+          body.msRequestFullscreen();
+        }
+      } else {
+        self.fullScreenMessage = `Full Screen? Not supported, requires gesture input`;
       }
 
-      if (body.requestFullscreen) {
-        body.requestFullscreen();
-      } else if (body.webkitRequestFullscreen) {
-        body.webkitRequestFullscreen();
-      } else if (body.mozRequestFullscreen) {
-        body.mozRequestFullscreen();
-      } else if (body.msRequestFullscreen) {
-        body.msRequestFullscreen();
-      }
     }
   },
   created: function() {
