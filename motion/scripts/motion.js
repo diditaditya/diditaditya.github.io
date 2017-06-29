@@ -21,11 +21,20 @@ var main = new Vue({
     accX: 'acc X: Unknown',
     accY: 'acc Y: Unknown',
     accZ: 'acc Z: Unknown',
-    fullScreenMessage: 'Full Screen? Unknown'
+    browser: 'Browser: Unknown',
+    device: 'Device: Unknown'
   },
-  methods: {},
+  methods: {
+    checkUserAgent() {
+      this.browser = `Browser: ${navigator.appCodeName}`;
+      this.device = `Device: ${navigator.platform}`;
+      console.log(navigator.userAgent);
+    }
+  },
   created: function() {
     let self = this;
+
+    this.checkUserAgent();
 
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', function(eventData) {

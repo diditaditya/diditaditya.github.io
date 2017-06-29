@@ -73,26 +73,12 @@ header {
   text-align: center;
 }
 
-#container {
-
+.dev-orient-list {
+  list-style: none;
 }
 
-.card {
-  border: 1px solid DarkSlateGray;
-  padding-top: 25%;
-  border-radius: 10px;
-  float: left;
-  background-color: Gray;
-}
-
-.cardHard {
-  border: 1px solid DarkSlateGray;
-  padding-top: 25%;
-  border-radius: 10px;
-  width: 18%;
-  float: left;
-  background-color: Gray;
-  margin: 1%;
+.dev-motion-list {
+  list-style: none;
 }
 
 #message {
