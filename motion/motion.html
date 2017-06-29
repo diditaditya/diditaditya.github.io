@@ -9,7 +9,7 @@
   <script src="scripts/p5.min.js"></script>
   <script src="scripts/p5.sound.min.js"></script>
   <script src="scripts/motion.js"></script>
-  <script src="https://unpkg.com/vue"></script>
+  <script src="scripts/vue@2.3.4.js"></script>
   <title>Motion</title>
 </head>
 <body>
@@ -27,11 +27,6 @@
   </div>
 
   <script>
-    var tiltLR;
-    var tiltFB;
-    var dir;
-    var message;
-
 
     var HeaderText = {
       template: '<h4 class="header">Simple App - Device Motion</h4>'
@@ -57,17 +52,31 @@
       created: function() {
         let self = this;
         if (window.DeviceOrientationEvent) {
-          console.log('main is created!');
           window.addEventListener('deviceorientation', function(eventData) {
-            console.log('deviceorientation ', eventData);
-            self.tiltLR = eventData.gamma;
-            self.tiltFB = eventData.beta;
-            self.dir = eventData.alpha;
+
+            if (eventData.gamma !== null) {
+              self.tiltLR = `tilt L-R: ${Math.floor(eventData.gamma)}`;
+            } else {
+              self.tiltLR = 'tilt L-R: Not supported';
+            }
+
+            if (eventData.beta !== null) {
+              self.tiltFB = `tilt F-B: ${Math.floor(eventData.beta)}`;
+            } else {
+              self.tiltFB = 'tilt F-B: Not supported';
+            }
+
+            if (eventData.alpha !== null) {
+              self.dir = `direction: ${Math.floor(eventData.alpha)}`;
+            } else {
+              self.dir = 'direction: Not supported';
+            }
+
           });
         } else {
-          self.tiltLR = 'Not supported';
-          self.tiltFB = 'Not supported';
-          self.dir = 'Not supported';
+          self.tiltLR = 'tilt L-R: Not supported';
+          self.tiltFB = 'tilt F-B: Not supported';
+          self.dir = 'direction: Not supported';
         }
       }
     });
