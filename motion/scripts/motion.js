@@ -35,7 +35,7 @@ var main = new Vue({
   created: function() {
     let self = this;
 
-    self.goFullScreen();
+    // self.goFullScreen();
 
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', function(eventData) {
