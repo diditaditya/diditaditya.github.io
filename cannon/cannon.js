@@ -1,6 +1,6 @@
 var groundThickness = 25;
 var initVelocity = 10;
-var gravity = 0.005
+var gravity = 0.004;
 var groundFriction = 5;
 
 var originX = 25;
@@ -9,7 +9,13 @@ var originY = 275;
 var counter = 0;
 
 var ball = { isFired: false };
+var balloons = new Balloon();
 let canvasWidth;
+let cannonSound;
+
+function preload() {
+  cannonSound = loadSound('sounds/Cannon.wav');
+}
 
 function setup() {
   if (window.innerWidth > 575) {
@@ -19,6 +25,16 @@ function setup() {
   }
   var canvas = createCanvas(canvasWidth - 25, 300);
   canvas.parent('#canvas-container');
+
+  if (canvasWidth < 300) {
+    initVelocity = 7.5;
+    gravity = 0.004;
+  }
+
+  balloons.createBalloons(canvasWidth*0.5, width, 25, height - 50, 10);
+  console.log(balloons);
+
+  cannonSound.setVolume(0.1);
 }
 
 function drawLine(originX, originY) {
@@ -57,6 +73,11 @@ function draw(){
 
   drawGround(groundThickness);
 
+  if (balloons.balloons.length === 0) {
+    balloons.createBalloons(canvasWidth*0.5, width, 25, height - 50, 10);
+  }
+  balloons.showBalloons();
+
   stroke(0);
   fill(0);
   ellipse(originX, originY, 10, 10);
@@ -65,11 +86,13 @@ function draw(){
   if (mouseIsPressed && mouseX > originX && mouseY < originY) {
     if (!ball.isFired) {
       ball = new Ball(originX, originY, mouseX, mouseY, initVelocity);
+      // cannonSound.play();
     }
   }
 
   if (ball.isFired) {
     ball.update();
+    balloons.updateBalloons(ball.posX, ball.posY, ball.radius);
   }
 
 
