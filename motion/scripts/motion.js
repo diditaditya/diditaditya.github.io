@@ -28,32 +28,46 @@ var main = new Vue({
       let self = this;
       let body = document.documentElement;
 
-      let browserInfo = navigator.userAgent.toLowerCase();
-      if (/iphone/.test(browserInfo) || /android/.test(browserInfo)) {
-        if (body.requestFullscreen) {
-          self.fullScreenMessage = `Full Screen? standard`;
-          body.requestFullscreen();
-        } else if (body.webkitRequestFullscreen) {
-          self.fullScreenMessage = `Full Screen? webkit`;
-          body.webkitRequestFullscreen();
-        } else if (body.mozRequestFullscreen) {
-          self.fullScreenMessage = `Full Screen? moz`;
-          body.mozRequestFullscreen();
-        } else if (body.msRequestFullscreen) {
-          self.fullScreenMessage = `Full Screen? microsoft`;
-          body.msRequestFullscreen();
-        } else {
-          let device = '';
-          if (/iphone/.test(browserInfo)) {
-            device = 'iphone';
-          } else if (/android/.test(browserInfo)) {
-            device = 'android';
-          }
-          self.fullScreenMessage = `Full Screen? ${device} - unknown`;
-        }
-      } else {
-        self.fullScreenMessage = `Full Screen? Not supported, requires gesture input`;
+      if (body.requestFullscreen) {
+        self.fullScreenMessage = `Full Screen? standard`;
+        body.requestFullscreen();
+      } else if (body.webkitRequestFullscreen) {
+        self.fullScreenMessage = `Full Screen? webkit`;
+        body.webkitRequestFullscreen();
+      } else if (body.mozRequestFullscreen) {
+        self.fullScreenMessage = `Full Screen? moz`;
+        body.mozRequestFullscreen();
+      } else if (body.msRequestFullscreen) {
+        self.fullScreenMessage = `Full Screen? microsoft`;
+        body.msRequestFullscreen();
       }
+
+      // let browserInfo = navigator.userAgent.toLowerCase();
+      // if (/iphone/.test(browserInfo) || /android/.test(browserInfo)) {
+      //   if (body.requestFullscreen) {
+      //     self.fullScreenMessage = `Full Screen? standard`;
+      //     body.requestFullscreen();
+      //   } else if (body.webkitRequestFullscreen) {
+      //     self.fullScreenMessage = `Full Screen? webkit`;
+      //     body.webkitRequestFullscreen();
+      //   } else if (body.mozRequestFullscreen) {
+      //     self.fullScreenMessage = `Full Screen? moz`;
+      //     body.mozRequestFullscreen();
+      //   } else if (body.msRequestFullscreen) {
+      //     self.fullScreenMessage = `Full Screen? microsoft`;
+      //     body.msRequestFullscreen();
+      //   } else {
+      //     let device = '';
+      //     if (/iphone/.test(browserInfo)) {
+      //       device = 'iphone';
+      //     } else if (/android/.test(browserInfo)) {
+      //       device = 'android';
+      //     }
+      //     self.fullScreenMessage = `Full Screen? ${device} - unknown`;
+      //   }
+      // } else {
+      //   self.fullScreenMessage = `Full Screen? Not supported, requires gesture input`;
+      // }
 
     }
   },
