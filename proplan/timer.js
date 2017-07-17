@@ -29,7 +29,8 @@ var count = () => {
 //function to start the timer count down if it is not yet timed
 var startCount = () => {
   if (!isTimed) {
-    console.log('counter is initiated!');
+    // console.log('counter is initiated!');
+    isTimed = true;
     gameTimer = setInterval(count, interval);
   }
 }

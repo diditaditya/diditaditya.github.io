@@ -12,7 +12,7 @@ for (var i = 0; i < rowAmount; i++) {
 }
 
 // backside image of the card
-var backSideImage = './images/back.png';
+var backSideImage = './images/back.jpg';
 
 //create rowDiv which contains the rows
 var rowDiv = container.children;
@@ -46,11 +46,11 @@ var images = [];
 var pickedIndices = [];
 var amountOfPicked = 0;
 while (pickedIndices.length < 10) {
-  var index = Math.floor(Math.random() * 10);
+  var index = Math.floor(Math.random() * 11);
   if (pickedIndices.indexOf(index) < 0) {
     pickedIndices.push(index);
     var image = {
-      name: `front${index}.png`,
+      name: `front${index}.jpg`,
       count: 0,
     };
     images.push(image);
@@ -141,7 +141,7 @@ for (var m = 0; m < rowAmount; m++) {
   }
 }
 
-console.log('cards ',cards);
+// console.log('cards ',cards);
 
 //function to count the flipped card, max 2 cards is allowed
 var opened = 0;
@@ -160,26 +160,23 @@ function checkOpen(card, color, image) {
 }
 
 //function to check the colors of flipped cards
-var checkMatch = false;
-function checkColor(openedColor) {
-	var finalColor = "";
-	if (openedColor[0] === openedColor[1]) {
-		finalColor = "White";
-		checkMatch = true;
-
-	} else {
-		finalColor = "Gray";
-		checkMatch = false;
-
-	}
-
-	return finalColor;
-}
+// var checkMatch = false;
+// function checkColor(openedColor) {
+// 	var finalColor = "";
+// 	if (openedColor[0] === openedColor[1]) {
+// 		finalColor = "White";
+// 		checkMatch = true;
+// 	} else {
+// 		finalColor = "Gray";
+// 		checkMatch = false;
+// 	}
+// 	return finalColor;
+// }
 
 //function to check the images of flipped cards
 var checkImageMatch = false;
 function checkImage(openedImages) {
-  console.log('openedImages ', openedImages);
+  // console.log('openedImages ', openedImages);
 	var finalImage = "";
 	if (openedImages[0] === openedImages[1]) {
 		checkImageMatch = true;
@@ -275,7 +272,7 @@ function postFinished() {
     stopCount();
 	  container.style.display = "none";
 	  var messagePar = document.createElement("p");
-	  var messageText = document.createTextNode("All colors have been paired!");
+	  var messageText = document.createTextNode("All have been paired!");
 	  messagePar.appendChild(messageText);
 	  message.appendChild(messagePar);
 	  // newButton();
