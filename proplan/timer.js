@@ -1,13 +1,13 @@
-let timer = document.getElementById('timer');
-let scoreElem = document.getElementById('score');
+var timer = document.getElementById('timer');
+var scoreElem = document.getElementById('score');
 
-let isTimed = false;
-let isTimeUp = false;
+var isTimed = false;
+var isTimeUp = false;
 var isGameOver = false;
 var gameTimer;
 
-let counter = 100;
-let interval = 1000;
+var counter = 100;
+var interval = 1000;
 var score = 0;
 
 timer.innerHTML = `Time left: ${counter}`;

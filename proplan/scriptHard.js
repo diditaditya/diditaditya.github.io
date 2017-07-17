@@ -160,18 +160,18 @@ function checkOpen(card, color, image) {
 }
 
 //function to check the colors of flipped cards
-// var checkMatch = false;
-// function checkColor(openedColor) {
-// 	var finalColor = "";
-// 	if (openedColor[0] === openedColor[1]) {
-// 		finalColor = "White";
-// 		checkMatch = true;
-// 	} else {
-// 		finalColor = "Gray";
-// 		checkMatch = false;
-// 	}
-// 	return finalColor;
-// }
+var checkMatch = false;
+function checkColor(openedColor) {
+	var finalColor = "";
+	if (openedColor[0] === openedColor[1]) {
+		finalColor = "White";
+		checkMatch = true;
+	} else {
+		finalColor = "Gray";
+		checkMatch = false;
+	}
+	return finalColor;
+}
 
 //function to check the images of flipped cards
 var checkImageMatch = false;
