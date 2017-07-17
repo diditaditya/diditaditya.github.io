@@ -1,3 +1,5 @@
+var doesWin = false;
+
 //select container
 var container = document.getElementById("container");
 
@@ -54,8 +56,6 @@ while (pickedIndices.length < 10) {
     images.push(image);
   }
 }
-
-console.log('images ', images);
 
 //create object constructor for the color
 var colorObj = function(name) {
@@ -166,10 +166,13 @@ function checkColor(openedColor) {
 	if (openedColor[0] === openedColor[1]) {
 		finalColor = "White";
 		checkMatch = true;
+
 	} else {
 		finalColor = "Gray";
 		checkMatch = false;
+
 	}
+
 	return finalColor;
 }
 
@@ -180,15 +183,21 @@ function checkImage(openedImages) {
 	var finalImage = "";
 	if (openedImages[0] === openedImages[1]) {
 		checkImageMatch = true;
+    score = score + 10;
 	} else {
 		finalImage = backSideImage;
 		checkImageMatch = false;
+    if (score > 0) {
+      score = score - 1;
+    }
 	}
+  updateScore();
 	return finalImage;
 }
 
 //function to turn the card
 function flip(elem) {
+  startCount();
   if (opened < 2) {
     for (var n in cards) {
 	  var id = elem.id;
@@ -215,18 +224,30 @@ function flip(elem) {
 }
 
 //function to check if all cards are paired
-function finished() {
+function areAllPaired() {
   var falseAmount = 0;
   for (var i in cards) {
     if (cards[i].paired === false) {
-	  falseAmount += 1
-	}
+	     falseAmount += 1
+	    }
   }
   // console.log("False amount: " + falseAmount);
   if (falseAmount > 0) {
     return false;
   } else {
     return true;
+  }
+}
+
+//function to check if game is finished
+function finished() {
+  if (areAllPaired() && !isGameOver) {
+    console.log('in finished() all are paired!');
+    stopCount();
+    doesWin = true;
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -251,6 +272,7 @@ function newButton() {
 //function for the game after it finishes
 function postFinished() {
   if (finished()) {
+    stopCount();
 	  container.style.display = "none";
 	  var messagePar = document.createElement("p");
 	  var messageText = document.createTextNode("All colors have been paired!");
@@ -266,7 +288,6 @@ function flipAgain(cardToCheck) {
 		// var color = checkColor(openedColor);
     // console.log('color ', color);
     var image = checkImage(openedImages);
-    console.log('image ', image);
 		var card1 = document.getElementById(cardToCheck[0]);
 		var card2 = document.getElementById(cardToCheck[1]);
     if (image.length > 0) {
@@ -312,12 +333,12 @@ for (var k = 0; k < rowAmount; k++) {
     col.addEventListener("click", function() {
       flip(this);
       if (openedCard.length === 2 ){
-        setTimeout(function() {flipAgain(openedCard)}, 1500);
+        // stopCount();
+        setTimeout(function() {flipAgain(openedCard)}, 1250);
       }
     });
   }
 }
-
 
 //restart function for the button, refreshes the page
 function restart() {

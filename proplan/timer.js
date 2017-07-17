@@ -1,0 +1,63 @@
+let timer = document.getElementById('timer');
+let scoreElem = document.getElementById('score');
+
+let isTimed = false;
+let isTimeUp = false;
+var isGameOver = false;
+var gameTimer;
+
+let counter = 100;
+let interval = 1000;
+var score = 0;
+
+timer.innerHTML = `Time left: ${counter}`;
+scoreElem.innerHTML = `Score: ${score}`;
+
+//function to count down if the counter is > 0
+var count = () => {
+  if (counter > 0) {
+    isTimed = true;
+    counter --;
+    timer.innerHTML = `Time left: ${counter}`;
+  } else {
+    timer.innerHTML = 'Time is up!';
+    isTimeUp = true;
+    postTimeIsUp();
+  }
+}
+
+//function to start the timer count down if it is not yet timed
+var startCount = () => {
+  if (!isTimed) {
+    console.log('counter is initiated!');
+    gameTimer = setInterval(count, interval);
+  }
+}
+
+//function to stop the countdown interval
+var stopCount = () => {
+  clearInterval(gameTimer);
+  isTimed = false;
+}
+
+//function to show something when the time is up
+function postTimeIsUp() {
+  if (!isGameOver) {
+    if (isTimeUp) {
+      isGameOver = true;
+      console.log('isTimeUp ', isTimeUp);
+      console.log('isGameOver ', isGameOver);
+      stopCount();
+  	  container.style.display = "none";
+  	  var messagePar = document.createElement("p");
+  	  var messageText = document.createTextNode("You are not quick enough!");
+  	  messagePar.appendChild(messageText);
+  	  message.appendChild(messagePar);
+    }
+  }
+}
+
+//function to update score
+function updateScore() {
+  scoreElem.innerHTML = `Score: ${score}`
+}

@@ -53,6 +53,14 @@ body {
   font-size: 1em;
 }
 
+#timer {
+  float: left;
+}
+
+#score {
+  float: right;
+}
+
 header {
   background-color: Black;
   top: 0;
@@ -70,7 +78,7 @@ header {
 }
 
 #main {
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 .card {
