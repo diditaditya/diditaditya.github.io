@@ -6,7 +6,7 @@ var isTimeUp = false;
 var isGameOver = false;
 var gameTimer;
 
-var counter = 100;
+var counter = 60;
 var interval = 1000;
 var score = 0;
 
