@@ -1,10 +1,20 @@
+//variables
+var windowWidth = window.innerWidth;
+var windowHeight = window.innerHeight;
+var rowAmount = 5;
+var colAmount = 4;
 var doesWin = false;
 
 //select container
 var container = document.getElementById("container");
 
+//getting width and height ratio
+if (windowWidth > windowHeight) {
+  rowAmount = 4;
+  colAmount = 5;
+}
+
 //create rowDiv inside container
-var rowAmount = 5;
 for (var i = 0; i < rowAmount; i++) {
   var rowDiv = document.createElement("div");
   rowDiv.setAttribute("id", "row"+i);
@@ -17,8 +27,8 @@ var backSideImage = './images/back.jpg';
 //create rowDiv which contains the rows
 var rowDiv = container.children;
 var colList = [];
+
 //create colDiv inside rowDiv
-var colAmount = 4;
 for (var i = 0; i < rowAmount; i++) {
   for (var j = 0; j < colAmount; j++) {
     var colDiv = document.createElement("div");

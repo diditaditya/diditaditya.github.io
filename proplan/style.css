@@ -23,8 +23,8 @@ body {
 
 @media only screen and (min-width: 500px) {
   .containRow, #title {
-    width: 33.33%;
-    margin-left: 33.33%;
+    width: 55%;
+    margin-left: 22.5%;
   }
 }
 
@@ -122,7 +122,7 @@ header {
 }
 
 footer {
-  margin-top: 15%;
+  margin-top: 1%;
   text-align: center;
 }
 
