@@ -5,6 +5,17 @@ var rowAmount = 5;
 var colAmount = 4;
 var doesWin = false;
 
+
+
+//create new styleSheets for the card sides of faces
+var cardSideStyle = document.createElement("style");
+cardSideStyle.appendChild(document.createTextNode(""));
+document.head.appendChild(cardSideStyle);
+var cardStyleSheet = cardSideStyle.sheet;
+
+console.log(document.styleSheets);
+console.log(cardStyleSheet);
+
 //select container
 var container = document.getElementById("container");
 
@@ -18,6 +29,8 @@ if (windowWidth > windowHeight) {
 for (var i = 0; i < rowAmount; i++) {
   var rowDiv = document.createElement("div");
   rowDiv.setAttribute("id", "row"+i);
+  rowDiv.style.perpective = "800px";
+  rowDiv.style.position = "relative";
   container.appendChild(rowDiv);
 }
 
@@ -29,22 +42,38 @@ var rowDiv = container.children;
 var colList = [];
 
 //create colDiv inside rowDiv
+var styleCount = 0;
 for (var i = 0; i < rowAmount; i++) {
   for (var j = 0; j < colAmount; j++) {
+
     var colDiv = document.createElement("div");
     colDiv.setAttribute("class", "cardHard");
     var id = "col "+i+"-"+j;
     colDiv.setAttribute("id", id);
+
     var margin = 1;
     var width = `${((100-(margin*(colAmount*2)))/colAmount)}%`;
     colDiv.style.margin =`${margin}%`;
     colDiv.style.width = width;
-    colDiv.style.paddingTop = width;
-    colDiv.style.backgroundImage = `url(${backSideImage})`;
-    colDiv.style.backgroundSize = 'contain';
+    // colDiv.style.paddingTop = width;
+    // colDiv.style.backgroundImage = `url(${backSideImage})`;
+    // colDiv.style.backgroundSize = 'contain';
+
+    var cardDivBack = document.createElement("div");
+    // cardDivBack.style.backgroundImage = `url(${backSideImage})`;
+    // cardDivBack.style.backgroundSize = `contain`;
+    // cardDivBack.style.width = "100%";
+    // cardDivBack.style.paddingTop = "100%";
+    cardDivBack.setAttribute("class", "cardBack");
+    cardDivBack.setAttribute("id", `card-${i}-${j}`);
+
+
+    colDiv.appendChild(cardDivBack);
     rowDiv[i].appendChild(colDiv);
   }
 }
+
+console.log(cardStyleSheet);
 
 //collection of colors
 var colors = [
@@ -132,6 +161,7 @@ var cards = [];
 for (var m = 0; m < rowAmount; m++) {
   for (var n = 0; n < colAmount; n++) {
     var id = "col "+ m + "-" + n;
+    var cardId = `card-${m}-${n}`;
     var color = randomColor(limitColor(colors));
     var selectedImage = randomImage(limitImages(images));
 
@@ -147,7 +177,27 @@ for (var m = 0; m < rowAmount; m++) {
       }
     });
 
-    cards.push(new card(id, color, selectedImage.name));
+    let newCard = new card(id, color, selectedImage.name);
+    let col = document.getElementById(newCard.id);
+    let frontSideCard = document.createElement('div');
+    frontSideCard.setAttribute("id", `${cardId}-b`);
+    // frontSideCard.setAttribute("class", "cardFront");
+    cardStyleSheet.addRule(`#${cardId}-b`,
+      `
+        border: 1px solid DarkSlateGray;
+        border-radius: 10px;
+        background-image: url(./images/${newCard.image});
+        background-size: contain;
+        width: 100%;
+        padding-top: 100%;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+      `,
+      styleCount);
+    styleCount ++;
+    col.appendChild(frontSideCard);
+
+    cards.push(newCard);
   }
 }
 
@@ -321,7 +371,10 @@ function flipAgain(cardToCheck) {
   		card2.style.background = color;
 			card1.style.borderColor = color;
 			card2.style.borderColor = color;
-		}
+		} else {
+      card1.classList.toggle('flipped');
+      card2.classList.toggle('flipped');
+    }
 		//reset the variables which capture the opened cards
 		opened = 0;
 		openedCard = [];
@@ -333,17 +386,25 @@ function flipAgain(cardToCheck) {
 }
 
 //add event listener to the cards
-for (var k = 0; k < rowAmount; k++) {
-  for (var l = 0; l < colAmount; l++) {
-    var id = "col "+k+"-"+l;
-    var col = document.getElementById(id);
+for (let k = 0; k < rowAmount; k++) {
+  for (let l = 0; l < colAmount; l++) {
+    let id = "col "+k+"-"+l;
+    let col = document.getElementById(id);
     col.addEventListener("click", function() {
+      if (openedCard.indexOf(id) === -1 && openedCard.length < 2) {
+        this.classList.toggle('flipped');
+      }
       flip(this);
       if (openedCard.length === 2 ){
         // stopCount();
         setTimeout(function() {flipAgain(openedCard)}, 1250);
       }
     });
+    // let cardId = `card-${k}-${l}`;
+    // let card = document.getElementById(cardId);
+    // card.addEventListener("click", function() {
+    //   console.log(`${card.id} is clicked!`);
+    // });
   }
 }
 

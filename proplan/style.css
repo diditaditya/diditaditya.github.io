@@ -19,6 +19,7 @@ body {
   clear: both;
   display: table;
   width: 100%;
+  perspective: 800px;
 }
 
 @media only screen and (min-width: 500px) {
@@ -81,6 +82,10 @@ header {
   margin-top: 5px;
 }
 
+#container {
+  /*position: relative;*/
+}
+
 .card {
   border: 1px solid DarkSlateGray;
   padding-top: 25%;
@@ -92,11 +97,33 @@ header {
 }
 
 .cardHard {
-  border: 1px solid DarkSlateGray;
-  background-size: contain;
-  border-radius: 10px;
+  /*border: 1px solid DarkSlateGray;*/
+  /*background-size: contain;*/
+  /*border-radius: 10px;*/
   float: left;
-  background-color: White;
+  transform-style: preserve-3d;
+  transition: transform 0.25s;
+  /*position: absolute;*/
+  /*background-color: White;*/
+}
+
+[id*="col "].flipped {
+  transform: rotateY(180deg);
+}
+
+.cardBack {
+  border: 1px solid DarkSlateGray;
+  border-radius: 10px;
+  background-image: url('./images/back.jpg');
+  background-size: contain;
+  width: 100%;
+  padding-top: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+}
+
+.cardFront {
+
 }
 
 #message {
@@ -148,7 +175,7 @@ footer {
 
 .chapter-footer {
   width: 100%;
-  /*position: fixed;*/
+  position: fixed;
   left: 0;
   bottom: 0;
   /*z-index: 1;*/
