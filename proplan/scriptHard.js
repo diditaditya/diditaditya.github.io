@@ -26,7 +26,7 @@ if (windowWidth > windowHeight) {
 for (var i = 0; i < rowAmount; i++) {
   var rowDiv = document.createElement("div");
   rowDiv.setAttribute("id", "row"+i);
-  rowDiv.style.perpective = "800px";
+  rowDiv.style.perpective = "1000px";
   rowDiv.style.position = "relative";
   container.appendChild(rowDiv);
 }
@@ -387,6 +387,8 @@ function flipAgain(cardToCheck) {
 	}
 }
 
+console.log(cards);
+
 //add event listener to the cards
 for (let k = 0; k < rowAmount; k++) {
   for (let l = 0; l < colAmount; l++) {
@@ -394,12 +396,16 @@ for (let k = 0; k < rowAmount; k++) {
     let col = document.getElementById(id);
     col.addEventListener("click", function() {
       if (openedCard.indexOf(id) === -1 && openedCard.length < 2) {
-        this.classList.toggle('flipped');
+        cards.map(card => {
+          if (card.id === id && !card.paired) {
+            this.classList.toggle('flipped');
+          }
+        });
       }
       flip(this);
       if (openedCard.length === 2 ){
         // stopCount();
-        setTimeout(function() {flipAgain(openedCard)}, 1250);
+        setTimeout(function() {flipAgain(openedCard)}, 750);
       }
     });
     // let cardId = `card-${k}-${l}`;

@@ -105,6 +105,12 @@ header {
   transition: transform 0.25s;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: transform 0.25s;
+  -moz-transform-style: preserve-3d;
+  -moz-transition: transform 0.25s;
+  -ms-transform-style: preserve-3d;
+  -ms-transition: transform 0.25s;
+  -o-transform-style: preserve-3d;
+  -o-transition: transform 0.25s;
   /*position: absolute;*/
   /*background-color: White;*/
 }
@@ -113,6 +119,10 @@ header {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .cardBack {
@@ -122,9 +132,9 @@ header {
   background-size: contain;
   width: 100%;
   padding-top: 100%;
+  position: absolute;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  position: absolute;
 }
 
 .cardFront {

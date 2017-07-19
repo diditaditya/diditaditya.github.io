@@ -46,8 +46,6 @@ function postTimeIsUp() {
   if (!isGameOver) {
     if (isTimeUp) {
       isGameOver = true;
-      console.log('isTimeUp ', isTimeUp);
-      console.log('isGameOver ', isGameOver);
       stopCount();
   	  container.style.display = "none";
   	  var messagePar = document.createElement("p");
