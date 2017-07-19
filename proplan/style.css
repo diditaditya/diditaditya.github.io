@@ -130,8 +130,8 @@ header {
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  /*backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;*/
 }
 
 .cardBack {
@@ -152,10 +152,12 @@ header {
   background-size: contain;
   width: 100%;
   padding-top: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  /*backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;*/
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
+  /*transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);*/
 }
 
 #message {
