@@ -387,8 +387,6 @@ function flipAgain(cardToCheck) {
 	}
 }
 
-console.log(cards);
-
 //add event listener to the cards
 for (let k = 0; k < rowAmount; k++) {
   for (let l = 0; l < colAmount; l++) {
