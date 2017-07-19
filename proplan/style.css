@@ -103,12 +103,16 @@ header {
   float: left;
   transform-style: preserve-3d;
   transition: transform 0.25s;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: transform 0.25s;
   /*position: absolute;*/
   /*background-color: White;*/
 }
 
 [id*="col "].flipped {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
 }
 
 .cardBack {
@@ -123,7 +127,14 @@ header {
 }
 
 .cardFront {
-
+  border: 1px solid DarkSlateGray;
+  border-radius: 10px;
+  background-size: contain;
+  width: 100%;
+  padding-top: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
 #message {

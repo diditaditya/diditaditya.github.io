@@ -13,9 +13,6 @@ cardSideStyle.appendChild(document.createTextNode(""));
 document.head.appendChild(cardSideStyle);
 var cardStyleSheet = cardSideStyle.sheet;
 
-console.log(document.styleSheets);
-console.log(cardStyleSheet);
-
 //select container
 var container = document.getElementById("container");
 
@@ -72,8 +69,6 @@ for (var i = 0; i < rowAmount; i++) {
     rowDiv[i].appendChild(colDiv);
   }
 }
-
-console.log(cardStyleSheet);
 
 //collection of colors
 var colors = [
@@ -181,19 +176,16 @@ for (var m = 0; m < rowAmount; m++) {
     let col = document.getElementById(newCard.id);
     let frontSideCard = document.createElement('div');
     frontSideCard.setAttribute("id", `${cardId}-b`);
-    // frontSideCard.setAttribute("class", "cardFront");
-    cardStyleSheet.addRule(`#${cardId}-b`,
-      `
-        border: 1px solid DarkSlateGray;
-        border-radius: 10px;
-        background-image: url(./images/${newCard.image});
-        background-size: contain;
-        width: 100%;
-        padding-top: 100%;
-        backface-visibility: hidden;
-        transform: rotateY(180deg);
-      `,
-      styleCount);
+    frontSideCard.setAttribute("class", "cardFront");
+    if (cardStyleSheet.addRule) {
+      cardStyleSheet.addRule(`#${cardId}-b`,
+        `
+          background-image: url(./images/${newCard.image});
+        `,
+        styleCount);
+    } else {
+      frontSideCard.style.backgroundImage = `url(./images/${newCard.image})`;
+    }
     styleCount ++;
     col.appendChild(frontSideCard);
 
@@ -371,6 +363,16 @@ function flipAgain(cardToCheck) {
   		card2.style.background = color;
 			card1.style.borderColor = color;
 			card2.style.borderColor = color;
+
+      var card1Front = card1.childNodes[1];
+      card1Front.style.backgroundImage = '';
+      card1Front.style.background = color;
+      card1Front.style.borderColor = color;
+
+      var card2Front = card2.childNodes[1];
+      card2Front.style.backgroundImage = '';
+      card2Front.style.background = color;
+      card2Front.style.borderColor = color;
 		} else {
       card1.classList.toggle('flipped');
       card2.classList.toggle('flipped');
