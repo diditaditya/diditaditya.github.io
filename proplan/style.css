@@ -123,6 +123,7 @@ header {
   width: 100%;
   padding-top: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   position: absolute;
 }
 
@@ -133,6 +134,7 @@ header {
   width: 100%;
   padding-top: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
 }
