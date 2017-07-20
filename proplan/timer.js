@@ -10,8 +10,11 @@ var counter = 60;
 var interval = 1000;
 var score = 0;
 
-timer.innerHTML = `Time left: ${counter}`;
-scoreElem.innerHTML = `Score: ${score}`;
+// function to show initial score and timer
+function initScoreAndTimer() {
+  timer.innerHTML = `Time left: ${counter}`;
+  scoreElem.innerHTML = `Score: ${score}`;
+}
 
 //function to count down if the counter is > 0
 var count = () => {
@@ -59,4 +62,9 @@ function postTimeIsUp() {
 //function to update score
 function updateScore() {
   scoreElem.innerHTML = `Score: ${score}`
+}
+
+function resetTimerAndScore() {
+  counter = 60;
+  score = 0;
 }

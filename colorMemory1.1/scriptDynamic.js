@@ -274,7 +274,10 @@ function createCardsListener() {
       var col = document.getElementById(id);
       col.addEventListener("click", function() {
         flip(this);
-        setTimeout(function() {flipAgain(openedCard)}, 1500);
+        if (openedCard.length === 2) {
+          setTimeout(function() {flipAgain(openedCard)}, 1500);
+
+        }
       });
     }
   }
