@@ -346,15 +346,15 @@ function flipAgain(cardToCheck) {
     var image = checkImage(openedImages);
 		var card1 = document.getElementById(cardToCheck[0]);
 		var card2 = document.getElementById(cardToCheck[1]);
-    if (image.length > 0) {
-      card1.style.backgroundImage = `url(${backSideImage})`;
-      card1.style.backgroundSize = `contain`;
-      card2.style.backgroundImage = `url(${backSideImage})`;
-      card2.style.backgroundSize = `contain`;
-    } else {
-      card1.style.background = 'inherit';
-  		card2.style.background = 'inherit';
-    }
+    // if (image.length > 0) {
+    //   card1.style.backgroundImage = `url(${backSideImage})`;
+    //   card1.style.backgroundSize = `contain`;
+    //   card2.style.backgroundImage = `url(${backSideImage})`;
+    //   card2.style.backgroundSize = `contain`;
+    // } else {
+    //   card1.style.background = 'inherit';
+  	// 	card2.style.background = 'inherit';
+    // }
 		//turn the cards paired status to true if the cards match
 		if (checkImageMatch) {
 			for (var i in cards) {
@@ -365,10 +365,10 @@ function flipAgain(cardToCheck) {
 				}
 			}
       var color = 'White';
-      card1.style.background = color;
-  		card2.style.background = color;
-			card1.style.borderColor = color;
-			card2.style.borderColor = color;
+      // card1.style.background = color;
+  		// card2.style.background = color;
+			// card1.style.borderColor = color;
+			// card2.style.borderColor = color;
 
       var card1Front = card1.childNodes[1];
       card1Front.style.backgroundImage = '';
