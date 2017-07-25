@@ -6,7 +6,8 @@ var isTimeUp = false;
 var isGameOver = false;
 var gameTimer;
 
-var counter = 60;
+var counterInitVal = 60;
+var counter = counterInitVal;
 var interval = 1000;
 var score = 0;
 
@@ -14,6 +15,8 @@ var score = 0;
 function initScoreAndTimer() {
   timer.innerHTML = `Time left: ${counter}`;
   scoreElem.innerHTML = `Score: ${score}`;
+  timer.style.fontSize = "22px";
+  scoreElem.style.fontSize = "22px";
 }
 
 //function to count down if the counter is > 0
@@ -55,6 +58,7 @@ function postTimeIsUp() {
   	  var messageText = document.createTextNode("You are not quick enough!");
   	  messagePar.appendChild(messageText);
   	  message.appendChild(messagePar);
+      newButton();
     }
   }
 }
@@ -65,6 +69,6 @@ function updateScore() {
 }
 
 function resetTimerAndScore() {
-  counter = 60;
+  counter = counterInitVal;
   score = 0;
 }

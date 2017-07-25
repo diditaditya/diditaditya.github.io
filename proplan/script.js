@@ -1,8 +1,10 @@
 //variables
+var moreCards = 4;
+var lessCards = 3;
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
-var rowAmount = 5;
-var colAmount = 4;
+var rowAmount = moreCards;
+var colAmount = lessCards;
 var doesWin = false;
 
 //create new styleSheets for the card sides
@@ -14,17 +16,26 @@ var cardStyleSheet = cardSideStyle.sheet;
 //select container
 var container = document.getElementById("container");
 
+//set body height based on windowHeight
+function setBodyHeight() {
+  windowHeight = window.innerHeight;
+  let body = document.getElementsByTagName('body');
+  body[0].style.height = `900px`;
+  console.log(windowHeight);
+}
+
 //function to check width and height, and set row and col
 function setColAndRowAmounts() {
   windowWidth = window.innerWidth;
   windowHeight = window.innerHeight;
   if (windowWidth > windowHeight) {
-    rowAmount = 4;
-    colAmount = 5;
+    rowAmount = lessCards;
+    colAmount = moreCards;
   } else {
-    rowAmount = 5;
-    colAmount = 4;
+    rowAmount = moreCards;
+    colAmount = lessCards;
   }
+  // console.log(windowHeight);
 }
 
 //create rowDiv inside container
@@ -54,6 +65,7 @@ function createCol(colAmount) {
       colDiv.setAttribute("id", id);
 
       var margin = 1;
+
       var width = `${((100-(margin*(colAmount*2)))/colAmount)}%`;
       colDiv.style.margin =`${margin}%`;
       colDiv.style.width = width;
@@ -77,11 +89,12 @@ var colors = [
 
 //function to create collection of images
 var images = [];
-function createImageCollection() {
+function createImageCollection(rowAmount, colAmount) {
+  var imageAmount = (rowAmount * colAmount) / 2;
   var pickedIndices = [];
   var amountOfPicked = 0;
-  while (pickedIndices.length < 10) {
-    var index = Math.floor(Math.random() * 11);
+  while (pickedIndices.length < imageAmount) {
+    var index = Math.floor(Math.random() * (imageAmount + 1));
     if (pickedIndices.indexOf(index) < 0) {
       pickedIndices.push(index);
       var image = {
@@ -91,6 +104,7 @@ function createImageCollection() {
       images.push(image);
     }
   }
+  // console.log(images);
 }
 
 //create object constructor for the color
@@ -157,6 +171,13 @@ function randomImage(images) {
 var cards = [];
 function assignCards(rowAmount, colAmount) {
   let styleCount = 0;
+
+  if (cardStyleSheet.cssRules.length > 0) {
+    for (let i = 0; i < cardStyleSheet.cssRules.length; i++) {
+      cardStyleSheet.deleteRule(i);
+    }
+  }
+
   for (var m = 0; m < rowAmount; m++) {
     for (var n = 0; n < colAmount; n++) {
       var id = "col "+ m + "-" + n;
@@ -181,6 +202,7 @@ function assignCards(rowAmount, colAmount) {
       let frontSideCard = document.createElement('div');
       frontSideCard.setAttribute("id", `${cardId}-b`);
       frontSideCard.setAttribute("class", "cardFront");
+
       if (cardStyleSheet.cssRules[styleCount]) {
         cardStyleSheet.cssRules[styleCount].selectorText = `#${cardId}-b`;
         cardStyleSheet.cssRules[styleCount].style.backgroundImage = `url(./images/${newCard.image})`;
@@ -202,6 +224,9 @@ function assignCards(rowAmount, colAmount) {
     }
   }
   styleCount = 0;
+  // console.log(cards);
+  // console.log(document.styleSheets);
+  // console.log(cardStyleSheet);
 }
 
 
@@ -272,9 +297,6 @@ function flip(elem) {
   				}
   			}
   			checkOpen(id, color, image);
-  			// elem.style.background = color;
-        // elem.style.backgroundImage = `url('./images/${image}')`;
-        // elem.style.backgroundSize = `contain`;
   		  }
   	  }
     }
@@ -311,18 +333,38 @@ function finished() {
 var buttonContainer = document.getElementById("buttonContainer");
 function newButton() {
   var buttonOr = document.createElement("p");
-  var orText = document.createTextNode("or");
+  var orText = document.createTextNode("or choose the difficulty");
   buttonOr.appendChild(orText);
   buttonContainer.appendChild(buttonOr);
 
+  var buttonEasy = document.createElement("button");
+  var goEasyText = document.createTextNode("Easy");
+  buttonEasy.appendChild(goEasyText);
+  buttonEasy.setAttribute("class", "btn");
+  buttonEasy.addEventListener("click", function() {
+    newGameEasy()
+  });
+
+  // var buttonMedium = document.createElement("button");
+  // var goMediumText = document.createTextNode("Medium");
+  // buttonMedium.appendChild(goMediumText);
+  // buttonMedium.setAttribute("class", "btn");
+  // buttonMedium.addEventListener("click", function() {
+  //   newGameMedium()
+  // });
+
   var buttonHard = document.createElement("button");
-  var goHardText = document.createTextNode("It was Too Hard");
+  var goHardText = document.createTextNode("Hard");
   buttonHard.appendChild(goHardText);
   buttonHard.setAttribute("class", "btn");
   buttonHard.addEventListener("click", function() {
-    window.location = "colorMemoryNormal.html";
+    newGameHard()
   });
+
+  buttonContainer.appendChild(buttonEasy);
+  // buttonContainer.appendChild(buttonMedium);
   buttonContainer.appendChild(buttonHard);
+  // buttonContainer.style.marginBottom = "34%";
 }
 
 //function for the game after it finishes because they are all paired
@@ -336,6 +378,7 @@ function postFinished() {
 	  var messageText = document.createTextNode("You Won! All have been paired!");
 	  messagePar.appendChild(messageText);
 	  message.appendChild(messagePar);
+    newButton();
   }
 }
 
@@ -346,15 +389,7 @@ function flipAgain(cardToCheck) {
     var image = checkImage(openedImages);
 		var card1 = document.getElementById(cardToCheck[0]);
 		var card2 = document.getElementById(cardToCheck[1]);
-    // if (image.length > 0) {
-    //   card1.style.backgroundImage = `url(${backSideImage})`;
-    //   card1.style.backgroundSize = `contain`;
-    //   card2.style.backgroundImage = `url(${backSideImage})`;
-    //   card2.style.backgroundSize = `contain`;
-    // } else {
-    //   card1.style.background = 'inherit';
-  	// 	card2.style.background = 'inherit';
-    // }
+
 		//turn the cards paired status to true if the cards match
 		if (checkImageMatch) {
 			for (var i in cards) {
@@ -364,11 +399,7 @@ function flipAgain(cardToCheck) {
 					}
 				}
 			}
-      var color = 'White';
-      // card1.style.background = color;
-  		// card2.style.background = color;
-			// card1.style.borderColor = color;
-			// card2.style.borderColor = color;
+      var color = 'rgba(255, 255, 255, 0)';
 
       var card1Front = card1.childNodes[1];
       card1Front.style.backgroundImage = '';
@@ -422,7 +453,7 @@ function clear() {
     message.removeChild(message.lastChild);
   }
 
-  if (buttonContainer.children.length > 1) {
+  while (buttonContainer.children.length > 1) {
     buttonContainer.removeChild(buttonContainer.lastChild);
   }
 
@@ -447,16 +478,39 @@ function restart() {
   stopCount();
   clear();
   container.style.display = "inherit";
+  buttonContainer.style.marginBottom = "";
   game();
 }
 
 //create the main game function
 function game() {
+  // setBodyHeight();
   initScoreAndTimer();
   setColAndRowAmounts();
   createRow(rowAmount);
   createCol(colAmount);
-  createImageCollection();
+  createImageCollection(rowAmount, colAmount);
   assignCards(rowAmount, colAmount);
   createCardListeners();
+}
+
+//new game easy
+function newGameEasy() {
+  lessCards = 3;
+  moreCards = 4;
+  restart();
+}
+
+// //new game medium
+// function newGameMedium() {
+//   lessCards = 4;
+//   moreCards = 4;
+//   restart();
+// }
+
+//new game hard
+function newGameHard() {
+  lessCards = 4;
+  moreCards = 5;
+  restart();
 }

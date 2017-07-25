@@ -5,6 +5,11 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  background-image: url('./images/background/FRISKIES-plain.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1080px;
 }
 
 .row {
@@ -63,17 +68,20 @@ body {
 }
 
 header {
-  background-color: Black;
+  /*background-color: Black;*/
   top: 0;
   max-width: 100%;
   width: 100%;
+  /*margin-top: 10%;*/
 }
 
 .header {
-  font-family: 'Amatic SC', cursive;
-  font-size: 1.25em;
+  font-family: 'Rubik', sans-serif;
+  font-size: 5em;
+  letter-spacing: 5px;
   text-align: center;
-  color: White;
+  text-shadow: -3px 2px 10px Black;
+  color: #0081CA;
   margin: 0;
   padding: .5%;
 }
@@ -142,8 +150,12 @@ header {
   width: 100%;
   padding-top: 100%;
   position: absolute;
+
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
 }
 
 .cardFront {
@@ -152,12 +164,18 @@ header {
   background-size: contain;
   width: 100%;
   padding-top: 100%;
+
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
-  /*transform: translate3d(0,0,0);
-  -webkit-transform: translate3d(0,0,0);*/
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
 }
 
 #message {
@@ -171,7 +189,7 @@ header {
 }
 
 .btn {
-  margin-top: 10px;
+  margin: 10px;
   width: 15%;
   min-width: 150px;
   font-family: 'Montserrat', sans-serif;
