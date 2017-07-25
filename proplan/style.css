@@ -155,9 +155,9 @@ header {
 }
 
 .cardBack {
-  border: 1px solid DarkSlateGray;
+  /*border: 1px solid DarkSlateGray;*/
   border-radius: 10px;
-  background-image: url('./images/back.jpg');
+  background-image: url('./images/cards-colored/back.jpg');
   background-size: contain;
   width: 100%;
   padding-top: 100%;
@@ -171,7 +171,7 @@ header {
 }
 
 .cardFront {
-  border: 1px solid DarkSlateGray;
+  /*border: 1px solid DarkSlateGray;*/
   border-radius: 10px;
   background-size: contain;
   width: 100%;

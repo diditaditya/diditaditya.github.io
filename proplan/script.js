@@ -205,16 +205,16 @@ function assignCards(rowAmount, colAmount) {
 
       if (cardStyleSheet.cssRules[styleCount]) {
         cardStyleSheet.cssRules[styleCount].selectorText = `#${cardId}-b`;
-        cardStyleSheet.cssRules[styleCount].style.backgroundImage = `url(./images/${newCard.image})`;
+        cardStyleSheet.cssRules[styleCount].style.backgroundImage = `url(./images/cards-colored/${newCard.image})`;
       } else {
         if (cardStyleSheet.addRule) {
           cardStyleSheet.addRule(`#${cardId}-b`,
             `
-              background-image: url(./images/${newCard.image});
+              background-image: url(./images/cards-colored/${newCard.image});
             `,
             styleCount);
         } else {
-          frontSideCard.style.backgroundImage = `url(./images/${newCard.image})`;
+          frontSideCard.style.backgroundImage = `url(./images/cards-colored/${newCard.image})`;
         }
       }
       styleCount ++;
