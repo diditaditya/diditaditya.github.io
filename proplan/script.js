@@ -365,6 +365,10 @@ function newButton() {
   // buttonContainer.appendChild(buttonMedium);
   buttonContainer.appendChild(buttonHard);
   // buttonContainer.style.marginBottom = "34%";
+
+  document.getElementById('right-filler').style.marginLeft = "25%";
+  document.getElementById('right-filler').style.width = "50%";
+  document.getElementById('right-filler').style.paddingTop = "0";
 }
 
 //function for the game after it finishes because they are all paired
@@ -445,6 +449,9 @@ function createCardListeners() {
 
 //clear the page and reset the game variables
 function clear() {
+
+  document.getElementById('right-filler').style.marginLeft = "";
+
   while (container.lastChild) {
     container.removeChild(container.lastChild);
   }
@@ -478,7 +485,8 @@ function restart() {
   stopCount();
   clear();
   container.style.display = "inherit";
-  buttonContainer.style.marginBottom = "";
+  document.getElementById('right-filler').style.width = "25%";
+  document.getElementById('right-filler').style.paddingTop = "11.5%";
   game();
 }
 

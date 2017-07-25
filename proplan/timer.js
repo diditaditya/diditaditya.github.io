@@ -15,8 +15,6 @@ var score = 0;
 function initScoreAndTimer() {
   timer.innerHTML = `Time left: ${counter}`;
   scoreElem.innerHTML = `Score: ${score}`;
-  timer.style.fontSize = "22px";
-  scoreElem.style.fontSize = "22px";
 }
 
 //function to count down if the counter is > 0
