@@ -30,12 +30,12 @@ body {
 @media only screen and (min-width: 500px) {
   .containRow, #title {
     float: left;
-    width: 45%;
-    margin-left: 27.5%;
+    width: 35%;
+    margin-left: 32.5%;
   }
   #right-filler {
     float: left;
-    width: 27.5%;
+    width: 32.5%;
     padding-top: 12.5%;
   }
 }
@@ -91,7 +91,7 @@ header {
   letter-spacing: 5px;
   text-align: center;
   text-shadow: -3px 2px 10px Black;
-  color: #00cff9;
+  color: #288fca;
   margin: 0;
   padding: .5%;
 }
