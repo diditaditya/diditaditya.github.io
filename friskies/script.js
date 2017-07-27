@@ -1,6 +1,6 @@
 //variables
-var moreCards = 4;
-var lessCards = 4;
+var moreCards = colInitAmount;
+var lessCards = rowInitAmount;
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
 var rowAmount = moreCards;
@@ -94,7 +94,7 @@ function createImageCollection(rowAmount, colAmount) {
   var pickedIndices = [];
   var amountOfPicked = 0;
   while (pickedIndices.length < imageAmount) {
-    var index = Math.floor(Math.random() * (imageAmount + 1));
+    var index = Math.floor(Math.random() * imageStock);
     if (pickedIndices.indexOf(index) < 0) {
       pickedIndices.push(index);
       var image = {
@@ -359,14 +359,14 @@ function newButton() {
 
 //function to adjust the right-filler when the game finishes
 function postGameRightFiller() {
-  document.getElementById('right-filler').style.marginLeft = "32.5%";
-  document.getElementById('right-filler').style.width = "35%";
+  document.getElementById('right-filler').style.marginLeft = "27.5%";
+  document.getElementById('right-filler').style.width = "45%";
   document.getElementById('right-filler').style.paddingTop = "0";
 }
 
 //function to reset the right-filler when the game starts
 function resetRightFiller() {
-  document.getElementById('right-filler').style.width = "32.5%";
+  document.getElementById('right-filler').style.width = "27.5%";
   document.getElementById('right-filler').style.paddingTop = "12.5%";
 }
 

@@ -6,9 +6,7 @@ var isTimeUp = false;
 var isGameOver = false;
 var gameTimer;
 
-var counterInitVal = 60;
 var counter = counterInitVal;
-var interval = 1000;
 var score = 0;
 
 // function to show initial score and timer

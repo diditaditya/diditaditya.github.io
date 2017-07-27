@@ -30,12 +30,12 @@ body {
 @media only screen and (min-width: 500px) {
   .containRow, #title {
     float: left;
-    width: 35%;
-    margin-left: 32.5%;
+    width: 45%;
+    margin-left: 27.5%;
   }
   #right-filler {
     float: left;
-    width: 32.5%;
+    width: 27.5%;
     padding-top: 12.5%;
   }
 }
@@ -69,12 +69,14 @@ body {
   /*float: center;*/
   text-align: center;
   font-size: 2.5em;
+  font-weight: bold;
 }
 
 #score {
   /*float: center;*/
   text-align: center;
   font-size: 2.5em;
+  font-weight: bold;
 }
 
 header {
