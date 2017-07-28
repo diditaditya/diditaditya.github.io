@@ -6,6 +6,7 @@ var windowHeight = window.innerHeight;
 var rowAmount = moreCards;
 var colAmount = lessCards;
 var doesWin = false;
+var inStartGameFlipOpen = false;
 
 //create new styleSheets for the card sides
 var cardSideStyle = document.createElement("style");
@@ -432,17 +433,38 @@ function createCardListeners() {
   cards.map((card) => {
     let id = card.id;
     let col = document.getElementById(id);
+    card.elem = col;
     col.addEventListener("click", function() {
-      if (openedCard.indexOf(id) === -1 && openedCard.length < 2) {
-        if (!card.paired) {
-          this.classList.toggle('flipped');
+      if (!inStartGameFlipOpen) {
+        if (openedCard.indexOf(id) === -1 && openedCard.length < 2) {
+          if (!card.paired) {
+            this.classList.toggle('flipped');
+          }
+        }
+        flip(this);
+        if (openedCard.length === 2 ){
+          setTimeout(function() {flipAgain(openedCard)}, 750);
         }
       }
-      flip(this);
-      if (openedCard.length === 2 ){
-        setTimeout(function() {flipAgain(openedCard)}, 750);
-      }
     });
+  });
+}
+
+//game start open all cards for 1 second
+function startGameFlipOpen() {
+  cards.map((card, idx) => {
+    if (idx === 0) {
+      inStartGameFlipOpen = true;
+    }
+    setTimeout(() => {
+      card.elem.classList.toggle('flipped');
+      setTimeout(() => {
+        card.elem.classList.toggle('flipped');
+        if (idx === cards.length - 1) {
+          inStartGameFlipOpen = false;
+        }
+      }, startGameCardOpenTimeout);
+    }, 500);
   });
 }
 
@@ -497,4 +519,5 @@ function game() {
   createImageCollection(rowAmount, colAmount);
   assignCards(rowAmount, colAmount);
   createCardListeners();
+  startGameFlipOpen();
 }

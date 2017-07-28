@@ -12,6 +12,24 @@ body {
   height: 1080px;
 }
 
+@media only screen and (height: 720px) {
+  body {
+    height: 720px;
+  }
+}
+
+@media only screen and (height: 900px) {
+  body {
+    height: 900px;
+  }
+}
+
+@media only screen and (height: 1080px) {
+  body {
+    height: 1080px;
+  }
+}
+
 .row {
   content: "";
   clear: both;
