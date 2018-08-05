@@ -91,9 +91,10 @@ class View {
         var numOfDivs = 2;
         for (var i = 0; i < numOfDivs; i++) {
             var div = this.doc.createElement("div");
-            div.style.width = "50%";
-            div.style.float = "left";
-            div.style.textAlign = "left";
+            // div.style.width = "50%";
+            // div.style.float = "left";
+            // div.style.textAlign = "left";
+            div.setAttribute("class", "wordList");
             this.wordsList.appendChild(div);
         }
         var words = Object.keys(this.data);

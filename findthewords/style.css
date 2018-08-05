@@ -26,6 +26,10 @@ body {
     width: 33.33%;
     margin-left: 33.33%;
   }
+  #words {
+    width: 33.33%;
+    margin-left: 33.33%;
+  }
 }
 
 [class*="col-"] {
@@ -91,11 +95,10 @@ header {
   text-align: center;
 }
 
-#words {
-  margin-left: 33%;
-  width: 33%;
-  display: table;
-  clear: both;
+.wordList {
+  width: 50%;
+  float: left;
+  text-align: left;
 }
 
 #buttonContainer {
