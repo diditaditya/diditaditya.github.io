@@ -147,4 +147,3 @@ class App {
 }
 
 let app = new App(words);
-app.start();
