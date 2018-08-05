@@ -128,6 +128,7 @@ class App {
     }
 
     start() {
+        console.log('in app start');
         let msg = document.getElementById("message");
         msg.innerHTML = "start!";
         this.game = new Game(this.words, document);
