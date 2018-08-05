@@ -12,10 +12,10 @@ class Board {
     }
 
     _generateEmptyBoard() {
-        for (let i = 0; i < this.rowAmount; i++) {
-            let row = [];
-            for (let j = 0; j < this.colAmount; j++) {
-                let tile = new Tile(this.event);
+        for (var i = 0; i < this.rowAmount; i++) {
+            var row = [];
+            for (var j = 0; j < this.colAmount; j++) {
+                var tile = new Tile(this.event);
                 tile.setPosition(i, j);
                 row.push(tile);
             }
@@ -24,60 +24,60 @@ class Board {
     }
 
     _reverse(word) {
-        let revd = "";
-        for (let i = word.length-1; i >=0; i--) {
+        var revd = "";
+        for (var i = word.length-1; i >=0; i--) {
             revd += word[i];
         }
         return revd;
     }
 
     _randomBool() {
-        let bools = [true, false];
-        let idx = Math.floor(Math.random()*bools.length);
+        var bools = [true, false];
+        var idx = Math.floor(Math.random()*bools.length);
         return bools[idx];
     }
 
     _randomlySelectWord() {
-        let notOnBoard = Object.keys(this.data).filter(word => {
+        var notOnBoard = Object.keys(this.data).filter(word => {
             return !this.data[word].isOnBoard;
         });
-        let luckyNumber = Math.floor(Math.random()*notOnBoard.length);
-        let word = notOnBoard[luckyNumber];
-        let words = notOnBoard.filter(item => {
+        var luckyNumber = Math.floor(Math.random()*notOnBoard.length);
+        var word = notOnBoard[luckyNumber];
+        var words = notOnBoard.filter(item => {
             return item !== word;
         })
         return {word, words};
     }
 
     _randomlyPlaceOneWord(word) {
-        let len = word.length;
-        let pos = null;
-        let dirs = ['x', 'y'];
-        let dir = dirs[Math.floor(Math.random()*dirs.length)];
+        var len = word.length;
+        var pos = null;
+        var dirs = ['x', 'y'];
+        var dir = dirs[Math.floor(Math.random()*dirs.length)];
         if (dir == 'x') {
             pos = Math.floor(Math.random()*this.rowAmount);
         } else {
             pos = Math.floor(Math.random()*this.colAmount);
         }
-        let space = this._getAvailableSpace(pos, dir);
-        let fit = space.filter(avail => {
+        var space = this._getAvailableSpace(pos, dir);
+        var fit = space.filter(avail => {
             if (avail.length >= len) { return avail };
         });
-        let wordToPlace = this._randomBool() ? this._reverse(word) : word;
+        var wordToPlace = this._randomBool() ? this._reverse(word) : word;
         if (fit.length > 0) {
-            let luck = Math.floor(Math.random()*fit.length);
-            let venue = fit[luck];
-            let pad = venue.length - len;
+            var luck = Math.floor(Math.random()*fit.length);
+            var venue = fit[luck];
+            var pad = venue.length - len;
             pad = Math.floor(Math.random()*pad);
-            let start = venue.start+pad;
-            let end = venue.start+len+pad;
-            for (let i = start; i < end; i++) {
+            var start = venue.start+pad;
+            var end = venue.start+len+pad;
+            for (var i = start; i < end; i++) {
                 if (dir === 'x') {
-                    let tile = this.board[pos][i];
+                    var tile = this.board[pos][i];
                     tile.setLetter(wordToPlace[i - start]);
                     this.data[word].tiles.push(tile);
                 } else {
-                    let tile = this.board[i][pos];
+                    var tile = this.board[i][pos];
                     tile.setLetter(wordToPlace[i - start]);
                     this.data[word].tiles.push(tile);
                 }
@@ -94,21 +94,21 @@ class Board {
 
     placeWords() {
         while (this._checkWordsLeft().length > 0) {
-            let rolled = this._randomlySelectWord();
-            let word = rolled.word;
+            var rolled = this._randomlySelectWord();
+            var word = rolled.word;
             this._randomlyPlaceOneWord(word);
         }
     }
 
     fillEmpties() {
-        let chars = 'abcdefghijklmnopqrstuvwxyz';
+        var chars = 'abcdefghijklmnopqrstuvwxyz';
         chars.split();
-        for (let i = 0; i < this.rowAmount; i++) {
-            for (let j = 0; j < this.colAmount; j++) {
-                let tile = this.board[i][j];
+        for (var i = 0; i < this.rowAmount; i++) {
+            for (var j = 0; j < this.colAmount; j++) {
+                var tile = this.board[i][j];
                 if (tile.letter === null) {
-                    let idx = Math.floor(Math.random()*chars.length);
-                    let filler = chars[idx];
+                    var idx = Math.floor(Math.random()*chars.length);
+                    var filler = chars[idx];
                     tile.setLetter(filler);
                 }
             }
@@ -116,10 +116,10 @@ class Board {
     }
 
     _getAvailableSpace(pos, dir) {
-        let available = [];
+        var available = [];
         if (dir === 'x') {
-            let space = { dir, pos, start: null, end: null, length: 0, indices: []};
-            for (let i = 0; i < this.board[pos].length; i++) {
+            var space = { dir, pos, start: null, end: null, length: 0, indices: []};
+            for (var i = 0; i < this.board[pos].length; i++) {
                 if ( i === this.board[pos].length - 1) {
                     space.end = i-1;
                     space.length = space.indices.length;
@@ -138,8 +138,8 @@ class Board {
                 }
             }
         } else {
-            let space = { dir, pos, start: null, end: null, length: 0, indices: []};
-            for (let i = 0; i < this.rowAmount; i++) {
+            var space = { dir, pos, start: null, end: null, length: 0, indices: []};
+            for (var i = 0; i < this.rowAmount; i++) {
                 if (i === this.rowAmount - 1) {
                     space.end = i-1;
                     space.length = space.indices.length;

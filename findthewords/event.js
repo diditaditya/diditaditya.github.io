@@ -18,7 +18,7 @@ class EventEmitter {
     }
 
     emit(eventName, data) {
-        const event = this.events[eventName];
+        var event = this.events[eventName];
         if (event) {
             event.forEach(fn => {
                 fn.call(null, data);

@@ -15,7 +15,7 @@ class View {
     }
 
     createSubscription() {
-        let self = this;
+        var self = this;
         this.event.subscribe("wordFound", (data) => {
             self.strikeWord(data);
         });
@@ -37,20 +37,20 @@ class View {
     }
 
     strikeWord(word) {
-        let el = this.doc.getElementById(word);
+        var el = this.doc.getElementById(word);
         el.innerHTML = null;
-        let struck = this.doc.createElement("strike");
+        var struck = this.doc.createElement("strike");
         struck.innerHTML = word;
         el.appendChild(struck); 
     }
 
     resetTileColor() {
-        let rows = this.container.childNodes;
-        for (let i = 0; i < rows.length; i++) {
-            let cards = rows[i].childNodes;
-            for (let j = 0; j < cards.length; j++) {
-                let card = cards[j];
-                let tile = this.tiles[i][j];
+        var rows = this.container.childNodes;
+        for (var i = 0; i < rows.length; i++) {
+            var cards = rows[i].childNodes;
+            for (var j = 0; j < cards.length; j++) {
+                var card = cards[j];
+                var tile = this.tiles[i][j];
                 if (!tile.isFound) {
                     card.style.backgroundColor = "gray";
                 }
@@ -59,36 +59,36 @@ class View {
     }
 
     showHint() {
-        let words = Object.keys(this.data);
-        let unFound = words.filter(word => !this.data[word].isFound);
-        let idx = Math.floor(Math.random()*unFound.length);
-        let word = unFound[idx];
-        for (let tile of this.data[word].tiles) {
+        var words = Object.keys(this.data);
+        var unFound = words.filter(word => !this.data[word].isFound);
+        var idx = Math.floor(Math.random()*unFound.length);
+        var word = unFound[idx];
+        this.data[word].tiles.forEach(tile => {
             tile.card.style.backgroundColor = "white";
             setTimeout(() => {
                 tile.card.style.backgroundColor = "gray"
             }, 250);
-        }
+        });
     }
 
     showWordsList() {
-        let numOfDivs = 2;
-        for (let i = 0; i < numOfDivs; i++) {
-            let div = this.doc.createElement("div");
+        var numOfDivs = 2;
+        for (var i = 0; i < numOfDivs; i++) {
+            var div = this.doc.createElement("div");
             div.style.width = "50%";
             div.style.float = "left";
             div.style.textAlign = "center";
             this.wordsList.appendChild(div);
         }
-        let words = Object.keys(this.data);
-        let numOfWords = Math.floor(words.length/numOfDivs);
-        let start = 0;
-        for (let i = 0; i < numOfDivs; i++) {
-            let list = this.doc.createElement("ul");
+        var words = Object.keys(this.data);
+        var numOfWords = Math.floor(words.length/numOfDivs);
+        var start = 0;
+        for (var i = 0; i < numOfDivs; i++) {
+            var list = this.doc.createElement("ul");
             list.style.listStyleType = "none";
-            for (let j = start; j < start+numOfWords; j++) {
+            for (var j = start; j < start+numOfWords; j++) {
                 if (words[j]) {
-                    let item = this.doc.createElement("li");
+                    var item = this.doc.createElement("li");
                     item.innerHTML = words[j];
                     item.id = words[j];
                     list.appendChild(item);
@@ -124,9 +124,9 @@ class View {
     }
 
     _createTile(row, col) {
-        let id = `${row}-${col}`;
-        let tile = this.tiles[row][col];
-        let card = this.doc.createElement("div");
+        var id = `${row}-${col}`;
+        var tile = this.tiles[row][col];
+        var card = this.doc.createElement("div");
         card.setAttribute("class", "card");
         card.setAttribute("id", id);
         card.style.width = this._calcWidth(this.margin, this.colAmount);
@@ -138,18 +138,18 @@ class View {
     }
 
     _createRows() {
-        for (let row = 0; row < this.rowAmount; row++) {
-            let id = `row-${row}`;
-            let rowDiv = this.doc.createElement("div");
+        for (var row = 0; row < this.rowAmount; row++) {
+            var id = `row-${row}`;
+            var rowDiv = this.doc.createElement("div");
             rowDiv.setAttribute("id", id);
             this.container.appendChild(rowDiv);
         }
     }
 
     createTiles() {
-        let rows = this.container.children;
-        for (let row = 0; row < this.rowAmount; row++) {
-            for (let col = 0; col < this.colAmount; col++) {
+        var rows = this.container.children;
+        for (var row = 0; row < this.rowAmount; row++) {
+            for (var col = 0; col < this.colAmount; col++) {
                 rows[row].appendChild(this._createTile(row, col));
             }
         }

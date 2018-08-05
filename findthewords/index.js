@@ -27,7 +27,7 @@ class Game {
     }
 
     subscribe() {
-        let self = this;
+        var self = this;
         this.event.subscribe('printLetter', (letter) => {
             self.checkFoundWords();
         });
@@ -42,11 +42,11 @@ class Game {
     }
 
     checkFoundWords() {
-        let words = Object.keys(this.setup.data);
-        for (let word of words) {
-            this._checkIfFound(word);
+        var words = Object.keys(this.setup.data);
+        for (var i = 0; i < words.length; i++) {
+            this._checkIfFound(words[i]);
         }
-        let unFound = words.filter(word => {
+        var unFound = words.filter(word => {
             return !this.setup.data[word].isFound;
         });
         if (unFound.length === 0) {
@@ -56,7 +56,7 @@ class Game {
 
     _checkIfFound(word) {
         if (!this.setup.data[word].isFound) {
-            let unSelected = this.setup.data[word].tiles.filter(tile => {
+            var unSelected = this.setup.data[word].tiles.filter(tile => {
                 return !tile.isSelected
             });
             if (unSelected.length === 0) {
@@ -75,19 +75,19 @@ class Game {
     }
 
     _setup(words) {
-        let maxLength = 0;
-        let data = {};
-        for (let word of words) {
-            if (!data[word]) {
-                data[word] = {
+        var maxLength = 0;
+        var data = {};
+        for (var i = 0; i < words.length; i++) {
+            if (!data[words[i]]) {
+                data[words[i]] = {
                     isOnBoard: false,
                     isFound: false,
-                    length: word.length,
-                    letters: word.split(),
+                    length: words[i].length,
+                    letters: words[i].split(),
                     tiles : []
                 }
             }
-            maxLength = word.length > maxLength? word.length: maxLength;
+            maxLength = words[i].length > maxLength? words[i].length: maxLength;
         }
         maxLength = maxLength > words.length ? maxLength : words.length;
         return { maxLength, data };
@@ -103,16 +103,16 @@ class Game {
     }
 
     _reverse(word) {
-        let revd = "";
-        for (let i = word.length-1; i >=0; i--) {
+        var revd = "";
+        for (var i = word.length-1; i >=0; i--) {
             revd += word[i];
         }
         return revd;
     }
 
     isFound(letters) {
-        let revd = this._reverse(letters);
-        let words = Object.keys(this.setup.data);
+        var revd = this._reverse(letters);
+        var words = Object.keys(this.setup.data);
         if (words.includes(letters)) {
             this.setup.data[letters].isFound = true;
         } else if (words.includes(revd)) {
@@ -128,7 +128,7 @@ class App {
     }
 
     start() {
-        let msg = document.getElementById("message");
+        var msg = document.getElementById("message");
         msg.innerHTML = "start!";
         if (this.game !== null) {
             this.game.clear();
@@ -152,4 +152,4 @@ class App {
 }
 
 console.log('welcome to Find the Words!');
-const app = new App(words);
+var app = new App(words);
