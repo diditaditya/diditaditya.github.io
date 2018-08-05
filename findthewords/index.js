@@ -128,7 +128,6 @@ class App {
     }
 
     start() {
-        console.log('in app start');
         let msg = document.getElementById("message");
         msg.innerHTML = "start!";
         if (this.game !== null) {
@@ -154,4 +153,3 @@ class App {
 
 console.log('welcome to Find the Words!');
 const app = new App(words);
-app.start();
