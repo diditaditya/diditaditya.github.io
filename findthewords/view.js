@@ -1,5 +1,6 @@
 class View {
-    constructor(document, board, event) {
+    constructor(document, board, event, isFinished) {
+        this.isFinished = isFinished;
         this.event = event;
         this.doc = document;
         this.tiles = board.board;
@@ -12,6 +13,7 @@ class View {
         this.createTiles();
         this.showWordsList();
         this.createSubscription();
+        this.emptyMessage();
     }
 
     createSubscription() {
@@ -25,6 +27,11 @@ class View {
         this.event.subscribe("showHint", () => {
             self.showHint();
         });
+        this.event.subscribe("gameFinished", () => {
+            console.log('game over');
+            self.isFinished = true;
+            self.showFinishedMessage();
+        });
     }
 
     clear() {
@@ -34,6 +41,12 @@ class View {
         while (this.wordsList.lastChild) {
             this.wordsList.removeChild(this.wordsList.lastChild);
         }
+        this.emptyMessage();
+    }
+
+    emptyMessage() {
+        var msg = this.doc.getElementById("message");
+        msg.innerHTML = null;
     }
 
     strikeWord(word) {
@@ -52,6 +65,7 @@ class View {
                 var card = cards[j];
                 var tile = this.tiles[i][j];
                 if (!tile.isFound) {
+                    tile.unSelect();
                     card.style.backgroundColor = "gray";
                 }
             }
@@ -59,16 +73,18 @@ class View {
     }
 
     showHint() {
-        var words = Object.keys(this.data);
-        var unFound = words.filter(word => !this.data[word].isFound);
-        var idx = Math.floor(Math.random()*unFound.length);
-        var word = unFound[idx];
-        this.data[word].tiles.forEach(tile => {
-            tile.card.style.backgroundColor = "white";
-            setTimeout(() => {
-                tile.card.style.backgroundColor = "gray"
-            }, 250);
-        });
+        if (!this.isFinished) {
+            var words = Object.keys(this.data);
+            var unFound = words.filter(word => !this.data[word].isFound);
+            var idx = Math.floor(Math.random()*unFound.length);
+            var word = unFound[idx];
+            this.data[word].tiles.forEach(tile => {
+                tile.card.style.backgroundColor = "white";
+                setTimeout(() => {
+                    tile.card.style.backgroundColor = "gray"
+                }, 250);
+            });
+        }
     }
 
     showWordsList() {
@@ -77,16 +93,17 @@ class View {
             var div = this.doc.createElement("div");
             div.style.width = "50%";
             div.style.float = "left";
-            div.style.textAlign = "center";
+            div.style.textAlign = "left";
             this.wordsList.appendChild(div);
         }
         var words = Object.keys(this.data);
-        var numOfWords = Math.floor(words.length/numOfDivs);
+        var numOfWords = Math.ceil(words.length/numOfDivs);
         var start = 0;
+        var end = start + numOfWords;
         for (var i = 0; i < numOfDivs; i++) {
             var list = this.doc.createElement("ul");
             list.style.listStyleType = "none";
-            for (var j = start; j < start+numOfWords; j++) {
+            for (var j = start; j < end; j++) {
                 if (words[j]) {
                     var item = this.doc.createElement("li");
                     item.innerHTML = words[j];
@@ -95,6 +112,7 @@ class View {
                 }
             }
             start = numOfWords;
+            end = words.length;
             this.wordsList.childNodes[i].appendChild(list);
         }
     }
@@ -103,17 +121,27 @@ class View {
         return `${100/colAmount}%`
     }
 
+    showFinishedMessage() {
+        if (this.isFinished) {
+            var msg = this.doc.getElementById("message");
+            msg.innerHTML = "All words found! Game Over!";
+            msg.style.marginTop = "10px";
+        }
+    }
+
     _addCardListener(card, tile) {
+        var self = this;
         card.addEventListener("mouseenter", function() {
             card.style.backgroundColor = "lightgray";
         });
         card.addEventListener("click", function() {
-            this.isSelecting = !this.isSelecting;
-            tile.select();
-            if (tile.isSelected) {
-                card.style.backgroundColor = "lightgray";
-            } else {
-                card.style.backgroundColor = "gray";
+            if (!self.isFinished) {
+                tile.select();
+                if (tile.isSelected) {
+                    card.style.backgroundColor = "lightgray";
+                } else {
+                    card.style.backgroundColor = "gray";
+                }
             }
         });
         card.addEventListener("mouseleave", function() {

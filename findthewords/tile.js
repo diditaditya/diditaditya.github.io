@@ -17,18 +17,17 @@ class Tile {
         this.letter = letter;
     }
 
-    printLetter(letter) {
-        console.log(letter);
-        return letter;
-    }
-
     select() {
         if (!this.isFound) {
             this.isSelected = !this.isSelected;
         }
         if (this.isSelected) {
-            this.event.emit('printLetter', this.letter);
+            this.event.emit('selectLetter', this.letter);
         }
+    }
+
+    unSelect() {
+        this.isSelected = false;
     }
 
     found() {

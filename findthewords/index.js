@@ -1,14 +1,10 @@
 const words = [
-    "rhino",
-    "mesa",
-    "valkyr",
-    "limbo",
-    "excalibur",
-    "khora",
-    "zephyr",
-    "vauban",
-    "octavia",
-    "nidus"
+    "banana",
+    "papaya",
+    "orange",
+    "mango",
+    "avocado",
+    "soursop"
 ];
 
 class Game {
@@ -19,7 +15,8 @@ class Game {
         this.view = new View(
             document,
             this.board,
-            this.event
+            this.event,
+            this.isFinished
         );
         this.selected = "";
         this.isFinished = false;
@@ -28,7 +25,7 @@ class Game {
 
     subscribe() {
         var self = this;
-        this.event.subscribe('printLetter', (letter) => {
+        this.event.subscribe('selectLetter', (letter) => {
             self.checkFoundWords();
         });
     }
@@ -51,6 +48,7 @@ class Game {
         });
         if (unFound.length === 0) {
             this.isFinished = true;
+            this.event.emit("gameFinished");
         }
     }
 
@@ -93,15 +91,6 @@ class Game {
         return { maxLength, data };
     }
 
-    selectLetter(letter) {
-        this.selected += letter;
-        console.log(Game.selected);
-    }
-
-    resetSelected() {
-        this.selected = "";
-    }
-
     _reverse(word) {
         var revd = "";
         for (var i = word.length-1; i >=0; i--) {
@@ -128,8 +117,6 @@ class App {
     }
 
     start() {
-        var msg = document.getElementById("message");
-        msg.innerHTML = "start!";
         if (this.game !== null) {
             this.game.clear();
         }
