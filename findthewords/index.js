@@ -131,6 +131,9 @@ class App {
         console.log('in app start');
         let msg = document.getElementById("message");
         msg.innerHTML = "start!";
+        if (this.game !== null) {
+            this.game.clear();
+        }
         this.game = new Game(this.words, document);
     }
 
@@ -149,4 +152,6 @@ class App {
     }
 }
 
+console.log('welcome to Find the Words!');
 const app = new App(words);
+app.start();
