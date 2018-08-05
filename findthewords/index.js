@@ -128,6 +128,8 @@ class App {
     }
 
     start() {
+        let msg = document.getElementById("message");
+        msg.innerHTML = "start!";
         this.game = new Game(this.words, document);
     }
 
@@ -146,4 +148,4 @@ class App {
     }
 }
 
-let app = new App(words);
+const app = new App(words);
