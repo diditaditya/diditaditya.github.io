@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Find the Words</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Montserrat|Delius" rel="stylesheet">
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <script src="event.js"></script>
+  <script src="tile.js"></script>
+  <script src="board.js"></script>
+  <script src="view.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <h4 class="header">a Journal - Find the Words</h4>
+  </header>
+  
+  <div id="title" class="row">
+    <h1>Find The Words</h1>
+  </div>
+
+  <div id="words"></div>
+  
+  <div id="main" class="row">
+    <div id="container" class="containRow"></div>
+  </div>
+  
+  <div id="message"></div>
+  
+  <div id="buttonContainer" class="row">
+    <button class="btn" onclick="app.restart()">Restart</button>
+    <button class="btn" onclick="app.hint()">Hint</button>
+  </div>
+  
+  
+  <footer class="chapter-footer">
+    <div class="row" id="nav">
+      <h4 class="nav-text"><a href="../toc.html" id="chapter-link">Contents</a></h4>
+    </div>
+    <h5 class="chapter-copyright">copyright © 2018 diditaditya</h5>
+  </footer>
+
+</body>
+
+<script src="index.js"></script>
+
+</html>

@@ -70,39 +70,36 @@ header {
 }
 
 /* #main {
- 
+
 }
 
 #container {
-  
+
 } */
 
 .card {
   border: 1px solid DarkSlateGray;
-  padding-top: 25%;
-  border-radius: 10px;
-  width: 30%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  border-radius: 7.5px;
   float: left;
   background-color: Gray;
-  margin: 1.25%;
-}
-
-.cardHard {
-  border: 1px solid DarkSlateGray;
-  padding-top: 25%;
-  border-radius: 10px;
-  width: 18%;
-  float: left;
-  background-color: Gray;
-  margin: 1%;
+  text-align: center;
 }
 
 #message {
   text-align: center;
 }
 
+#words {
+  margin-left: 33%;
+  width: 33%;
+  display: table;
+  clear: both;
+}
+
 #buttonContainer {
-  display : block;
+  display: block;
   margin: 0 auto;
   text-align: center;
 }

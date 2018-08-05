@@ -19,8 +19,9 @@ let cannonSound;
 let blopSound;
 
 function preload() {
-  cannonSound = loadSound('sounds/Cannon.wav');
-  blopSound = loadSound('sounds/Blop.wav');
+  // error on web audio autoplay policy?
+  // cannonSound = loadSound('sounds/Cannon.wav');
+  // blopSound = loadSound('sounds/Blop.wav');
 }
 
 function setup() {
@@ -37,7 +38,7 @@ function setup() {
     gravity = 0.004;
   }
 
-  cannonSound.setVolume(0.1);
+  // cannonSound.setVolume(0.1);
 }
 
 function drawLine(originX, originY) {
@@ -95,7 +96,7 @@ function draw(){
   if (mouseIsPressed && mouseX > originX && mouseY < originY) {
     if (!ball.isFired) {
       ball = new Ball(originX, originY, mouseX, mouseY, initVelocity);
-      cannonSound.play();
+      // cannonSound.play();
       shotCounter ++;
     }
   }

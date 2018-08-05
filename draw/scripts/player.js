@@ -16,7 +16,6 @@ class Player {
         this.leftArm = this._createLeftArm();
         this.rightLeg = this._createRightLeg();
         this.leftLeg = this._createLeftLeg();
-        console.log(this.facingRight);
         this.facingRight ? null : this._flipFace();
         this._addPartsToLayer();
     }

@@ -45,7 +45,7 @@ class Balloon {
     this.balloons.map((balloon, index) => {
       if (this.isBalloonHit(ballX, ballY, ballRadius, balloon.posX, balloon.posY, balloon.width, balloon.height)) {
         this.balloons.splice(index, 1);
-        blopSound.play();
+        // blopSound.play();
         hitCounter ++;
       }
     });
