@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  /*border: 1px solid Black;*/
+  /* border: 1px solid Black; */
 }
 
 body {
@@ -54,7 +54,7 @@ body {
 
 #title {
   text-align: center;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 header {
@@ -148,6 +148,7 @@ footer {
 }
 
 .chapter-footer {
+  margin-top: 2.5%;
   width: 100%;
   /*position: fixed;*/
   left: 0;
