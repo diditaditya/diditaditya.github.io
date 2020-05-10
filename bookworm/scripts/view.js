@@ -4,6 +4,7 @@ class View {
     this._board = board;
     this._boardView = new BoardView(doc);
     this._msgView = new MessageView(doc);
+    this._hintBtnView = new HintButtonView(doc);
   }
 
   get boardView() {
@@ -17,6 +18,10 @@ class View {
   draw(board, worm) {
     this._boardView.drawBoard(board);
     this._boardView.drawWorm(worm, board);
+  }
+
+  updateHintQuota(quota) {
+    this._hintBtnView.updateHintQuota(quota);
   }
 
   reset() {
@@ -169,5 +174,17 @@ class MessageView {
 
   draw(message) {
     this._div.innerHTML = message;
+  }
+}
+
+class HintButtonView {
+  constructor(doc) {
+    this._id = "hintBtn";
+    this._btn = doc.getElementById(this._id);
+    this._btn.innerHTML = 'Hint';
+  }
+
+  updateHintQuota(quota) {
+    this._btn.innerHTML = `Hint - ${quota}`;
   }
 }

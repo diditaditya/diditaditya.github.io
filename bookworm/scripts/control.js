@@ -34,20 +34,21 @@ class Controller {
   }
 
   _touchToDir(clientX, clientY) {
+    const treshold = 10;
     const xdiff = clientX - this._touchStartX;
     const ydiff = clientY - this._touchStartY;
 
     const xdiffRatio = Math.abs(xdiff) / this._touchStartX;
     const ydiffRatio = Math.abs(ydiff) / this._touchStartY;
 
-    if (xdiffRatio * 100 > 25) {
+    if (xdiffRatio * 100 > treshold) {
       if (xdiff > 0) {
         return DIR.RIGHT;
       } else {
         return DIR.LEFT;
       }
     }
-    if (ydiffRatio * 100 > 25) {
+    if (ydiffRatio * 100 > treshold) {
       if (ydiff > 0) {
         return DIR.DOWN;
       } else {

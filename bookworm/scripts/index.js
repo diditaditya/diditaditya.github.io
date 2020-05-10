@@ -22,10 +22,20 @@ class App {
     this._words = words;
     this._level = 1;
     this._length = this._level + 2;
+    this._hintQuota = 1;
+    this._hint = {};
     this._eaten = '';
     this._interval = null;
     this._timeInBetween = 500;
     this._isOver = false;
+  }
+
+  resetHint() {
+    const quota = Math.ceil(this._level / 2);
+    this._hintQuota = Math.max(quota, 1);
+    this._hint = {};
+
+    this._view.updateHintQuota(this._hintQuota);
   }
 
   adjustWormSegment() { 
@@ -60,6 +70,7 @@ class App {
         this._words.clearCurrent();
         this.getWord();
       }
+      this.resetHint();
     }
   }
 
@@ -94,10 +105,12 @@ class App {
 
   start() {
     this._isOver = false;
-    this._view.messageView.draw('Create correct word!');
+    this._view.messageView.draw('Swipe or use arrow key to move. Create correct word!');
 
     this._board.wormed(this._worm);
     this.getWord();
+
+    this._view.updateHintQuota(this._hintQuota);
 
     this._view.draw(this._board, this._worm);
 
@@ -118,6 +131,41 @@ class App {
     }, this._timeInBetween);
   }
 
+  _createHint(answer) {
+    let hint = "";
+    for (let i = 0; i < answer.length; i += 1) {
+      let letter = "_";
+      if (this._hint[i]) letter = this._hint[i];
+      hint += letter; 
+    }
+    return hint;
+  }
+
+  hint() {
+    const answer = this._words.current.word;
+
+    if (this._hintQuota === 0) {
+      const hint = this._createHint(answer);
+      this._view.messageView.draw(`Hint: ${hint}`);
+      return;
+    }
+    
+    let done = false;
+    while(!done) {
+      const randIdx = Math.floor(Math.random() * answer.length);
+      if (!this._hint[randIdx]) {
+        this._hint[randIdx] = answer[randIdx];
+        done = true;
+      }
+    }
+
+    this._hintQuota -= 1;
+    this._view.updateHintQuota(this._hintQuota);
+    
+    const hint = this._createHint(answer);
+    this._view.messageView.draw(`Hint: ${hint}`);
+  }
+
   restart() {
     this._level = 1;
     this._length = this._level + 2;
@@ -125,6 +173,8 @@ class App {
     this._interval = null;
     this._timeInBetween = 500;
     this._isOver = false;
+
+    this.resetHint();
 
     this._rules.reset();
     this._words.reset();
