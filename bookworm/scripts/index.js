@@ -61,7 +61,10 @@ class App {
         this._rules.correct();
         this._view.messageView.draw(`correct word! ${this._eaten}`);
         const isLeveledUp = this._rules.levelUp();
-        if (isLeveledUp) this._view.messageView.draw(`LEVEL UP!`);
+        if (isLeveledUp) {
+          this._level += 1;
+          this._view.messageView.draw(`LEVEL ${this._level}!`);
+        }
       } else {
         this._view.messageView.draw('incorrect word!!');
       }
