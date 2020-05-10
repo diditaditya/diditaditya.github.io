@@ -62,7 +62,7 @@ class App {
         this._view.messageView.draw(`correct word! ${this._eaten}`);
         const isLeveledUp = this._rules.levelUp();
         if (isLeveledUp) {
-          this._level += 1;
+          this._level = this._rules.level;
           this._view.messageView.draw(`LEVEL ${this._level}!`);
         }
       } else {
@@ -111,7 +111,7 @@ class App {
     this._view.messageView.draw('Swipe or use arrow key to move!');
     setTimeout(() => {
       this._view.messageView.draw('Eat correct word!');
-    }, 1000);
+    }, 2000);
 
     this._board.wormed(this._worm);
     this.getWord();

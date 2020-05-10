@@ -34,7 +34,7 @@ class Controller {
   }
 
   _touchToDir(clientX, clientY) {
-    const treshold = 10;
+    const treshold = 25;
     const xdiff = clientX - this._touchStartX;
     const ydiff = clientY - this._touchStartY;
 
