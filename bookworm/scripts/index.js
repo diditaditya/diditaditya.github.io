@@ -108,7 +108,10 @@ class App {
 
   start() {
     this._isOver = false;
-    this._view.messageView.draw('Swipe or use arrow key to move. Create correct word!');
+    this._view.messageView.draw('Swipe or use arrow key to move!');
+    setTimeout(() => {
+      this._view.messageView.draw('Eat correct word!');
+    }, 1000);
 
     this._board.wormed(this._worm);
     this.getWord();

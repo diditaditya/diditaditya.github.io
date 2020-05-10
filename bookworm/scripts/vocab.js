@@ -149,6 +149,8 @@ approval
 approve
 approximately
 arab
+arc
+arch
 architect
 are
 area
@@ -2262,6 +2264,7 @@ sacred
 sad
 safe
 safety
+sag
 sake
 salad
 salary
