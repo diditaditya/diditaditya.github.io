@@ -31,11 +31,10 @@ class App {
   }
 
   resetHint() {
-    const quota = Math.ceil(this._level / 2);
+    const answer = this._words.current.word;
+    const quota = Math.ceil( answer.length / 2);
     this._hintQuota = Math.max(quota, 1);
     this._hint = {};
-
-    this._view.updateHintQuota(this._hintQuota);
   }
 
   adjustWormSegment() { 
@@ -116,8 +115,6 @@ class App {
     this._board.wormed(this._worm);
     this.getWord();
 
-    this._view.updateHintQuota(this._hintQuota);
-
     this._view.draw(this._board, this._worm);
 
     this._interval = setInterval(() => {
@@ -142,7 +139,8 @@ class App {
     for (let i = 0; i < answer.length; i += 1) {
       let letter = "_";
       if (this._hint[i]) letter = this._hint[i];
-      hint += letter; 
+      hint += letter;
+      if (i < answer.length - 1) hint += " ";
     }
     return hint;
   }
@@ -156,17 +154,13 @@ class App {
       return;
     }
     
-    let done = false;
-    while(!done) {
+    while(this._hintQuota > 0) {
       const randIdx = Math.floor(Math.random() * answer.length);
       if (!this._hint[randIdx]) {
         this._hint[randIdx] = answer[randIdx];
-        done = true;
+        this._hintQuota -= 1;
       }
     }
-
-    this._hintQuota -= 1;
-    this._view.updateHintQuota(this._hintQuota);
     
     const hint = this._createHint(answer);
     this._view.messageView.draw(`Hint: ${hint}`);
